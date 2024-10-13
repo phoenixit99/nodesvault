@@ -1,17 +1,230 @@
-import Banner from "./components/banner";
-import BlogSection from "./components/blogsection";
-// import Navbar from "./components/navbar";
-// import Tabs from "./components/tabs";
+// app/page.tsx
+"use client";
+import { Link } from "@chakra-ui/next-js";
+import { Button, useToast, VStack, Center, HStack } from "@chakra-ui/react";
+import { useState } from "react";
+import { useCallback } from "react";
+import Header from "./components/Header";
+import {
+  Box,
+  Grid,
+  Tab,
+  Tabs,
+  TabList,
+  TabPanels,
+  TabPanel,
+  Text,
+  Stack,
+} from "@chakra-ui/react";
+import NetworkCard from "./components/NetworkCard";
+import Footer from "./components/Footer";
+import TopView from "./components/TopView";
+import {
+  HamburgerIcon,
+  CloseIcon,
+  EmailIcon,
+  ArrowForwardIcon,
+} from "@chakra-ui/icons";
+import { FaGithub, FaTelegramPlane, FaTwitter } from "react-icons/fa";
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  Heading,
+} from "@chakra-ui/react";
+import HorizontalCardList from "./components/HorizontalCardList";
 
-const Home: React.FC = () => {
+const networks = [
+  {
+    name: "Blockx",
+    apy: "soon",
+    logo: "https://itrocket.net/_next/image/?url=%2Fmainnet%2Fblockx.jpg&w=256&q=75",
+  },
+  {
+    name: "Celestia",
+    apy: "~10%",
+    logo: "https://itrocket.net/mainnet/celestia.svg",
+  },
+  {
+    name: "Crossfi",
+    apy: "soon",
+    logo: "https://itrocket.net/_next/image/?url=%2Fmainnet%2Fcrossfi.jpg&w=256&q=75",
+  },
+  {
+    name: "Doravota",
+    apy: "~0%",
+    logo: "https://itrocket.net/_next/image/?url=%2Fmainnet%2Fdoravota.jpg&w=256&q=75",
+  },
+  {
+    name: "Empower",
+    apy: "~70%",
+    logo: "https://itrocket.net/_next/image/?url=%2Fmainnet%2Fempower.png&w=256&q=75",
+  },
+  {
+    name: "Forta",
+    apy: "soon",
+    logo: "https://itrocket.net/_next/image/?url=%2Fmainnet%2Fforta.jpg&w=256&q=75",
+  },
+  {
+    name: "Humans",
+    apy: "~41%",
+    logo: "https://itrocket.net/_next/image/?url=%2Fmainnet%2Fhumans.jpg&w=256&q=75",
+  },
+  {
+    name: "Lava",
+    apy: "soon",
+    logo: "https://itrocket.net/_next/image/?url=%2Fmainnet%2Flava.jpg&w=256&q=75",
+  },
+];
+export default function Page() {
+  const toast = useToast();
+  const [isBuying, setIsBuying] = useState(false);
+
+  const handleBuy = () => {
+    setIsBuying(true);
+
+    // Simulate the buy action (e.g., API call)
+    setTimeout(() => {
+      toast({
+        title: "Purchase Successful!",
+        description: "You have successfully bought the service.",
+        status: "success",
+        duration: 5000,
+        isClosable: true,
+      });
+      setIsBuying(false);
+    }, 2000);
+  };
   return (
-    <div className="bg-white min-h-screen">
-      {/* <Navbar /> */}
-      <Banner />
-      {/* <Tabs />*/}
-      <BlogSection /> 
-    </div>
-  );
-};
+    <>
+      <Header />
 
-export default Home;
+      <VStack
+        paddingTop={100}
+        alignItems={"center"}
+        textAlign={"center"}
+        align="center" // Horizontal alignment (center-aligns children)
+        justify="center" // Vertical alignment (adjusts positioning within the stack)
+      >
+        <Box className="flex flex-col items-center justify-center h-screen bg-white">
+          <Text
+            fontSize="8xl"
+            fontWeight="extrabold"
+          >
+            NodesVault
+          </Text>
+
+          <HStack
+            textAlign={"center"}
+            align="center" // Horizontal alignment (center-aligns children)
+            justify="center" // Vertical alignment (adjusts positioning within th
+            width={"100%"}
+          >
+            {" "}
+            <Text fontSize="5xl" fontWeight="bold" textAlign="center">
+              Professional
+            </Text>
+            <Text
+              bgGradient="linear(to-l, #7928CA, #FF0080)"
+              bgClip="text"
+              fontSize="6xl"
+              fontWeight="extrabold"
+            >
+              validators
+            </Text>
+            <Text fontSize="5xl" fontWeight="bold" textAlign="center">
+              ,optimized for maximum{" "}
+            </Text>
+            <Text
+              bgGradient="linear(to-l, #7928CA, #FF0080)"
+              bgClip="text"
+              fontSize="6xl"
+              fontWeight="extrabold"
+            >
+              security
+            </Text>
+          </HStack>
+
+          <Text
+            fontSize="lg"
+            mt={4}
+            textAlign="center"
+            width={"100%"}
+            paddingLeft={300}
+            paddingRight={300}
+          >
+            NodesVault is a leading blockchain validator and contributor in
+            various ecosystems. With a few simple steps, you can delegate funds
+            and benefit from our enterprise-level infrastructure or explore
+            tools designed for node operators, developers, and analysts.
+          </Text>
+          <Box
+            h="200px" // Set height of the Box
+            display="flex" // Flexbox to center content inside the Box
+            alignItems="center" // Center content vertically within the Box
+            justifyContent="center" // Center content horizontally within the Box
+            gap={4}
+          >
+            <Stack direction="row" spacing={4}>
+              <Button
+                leftIcon={<FaTwitter />}
+                colorScheme="teal"
+ variant="outline"
+              >
+                Twitter
+              </Button>
+
+              <Button
+                leftIcon={<FaTelegramPlane />}
+                colorScheme="teal"
+                variant="outline"
+              >
+                Telegram
+              </Button>
+
+              <Button
+                leftIcon={<FaGithub />}
+                colorScheme="teal"
+                variant="outline"
+              >
+                Github
+              </Button>
+            </Stack>
+          </Box>
+        </Box>
+        <HorizontalCardList />
+
+
+        <Box p={8} width={"100%"}>
+          <Text fontSize="4xl" fontWeight="bold" mb={4} textAlign="left">
+            Networks
+          </Text>
+          <Tabs colorScheme='teal'>
+            <TabList>
+              <Tab>All Active</Tab>
+              <Tab>Mainnet (17)</Tab>
+              <Tab>Testnet (37)</Tab>
+            </TabList>
+
+            <TabPanels>
+              <TabPanel>
+                <Grid
+                  templateColumns="repeat(auto-fill, minmax(300px, 1fr))"
+                  gap={6}
+                >
+                  {networks.map((network, index) => (
+                    <NetworkCard key={index} network={network} />
+                  ))}
+                </Grid>
+              </TabPanel>
+            </TabPanels>
+          </Tabs>
+        </Box>
+      </VStack>
+
+        <TopView />
+      <Footer />
+    </>
+  );
+}
