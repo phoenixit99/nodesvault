@@ -1,6 +1,7 @@
 // components/NetworkCard.tsx
 import { Box, Button, Text, VStack, HStack, Image } from '@chakra-ui/react'
 
+
 const NetworkCard = ({ network }) => {
   return (
     <Box

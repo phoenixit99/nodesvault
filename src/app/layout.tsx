@@ -1,8 +1,6 @@
 // app/layout.tsx
 import { ChakraProvider } from "@chakra-ui/react";
-import { extendTheme } from "@chakra-ui/react";
 import { Poppins } from "next/font/google";
-import { Providers } from "./providers";
 
 // Load Google Font Poppins
 const poppins = Poppins({

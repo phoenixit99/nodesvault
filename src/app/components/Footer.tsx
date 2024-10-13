@@ -3,12 +3,9 @@ import {
   Flex,
   Text,
   IconButton,
-  Stack,
   HStack,
-  Link,
   useDisclosure,
   useColorModeValue,
-  Image,
   VStack,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";

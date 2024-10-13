@@ -14,7 +14,6 @@ import {
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
-import { FaGithub, FaTelegramPlane, FaTwitter } from "react-icons/fa";
 const Header = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { colorMode, toggleColorMode } = useColorMode();

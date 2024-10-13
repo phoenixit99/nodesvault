@@ -3,10 +3,18 @@ import {
   Flex,
   Text,
   VStack,
-  useColorModeValue,
   Image,
+  useColorMode,
 } from "@chakra-ui/react";
 import { useState } from "react";
+
+// Define the types for the props
+interface CardProps {
+  title: string;
+  description: string;
+  isSelected: boolean;
+  onSelect: () => void; // Function type for onSelect, no arguments and no return value
+}
 
 const cardData = [
   {
@@ -62,11 +70,19 @@ const HorizontalCardList = () => {
   );
 };
 
-const Card = ({ title, description, isSelected, onSelect }) => {
-  const bgColor = isSelected
-    ? "teal.500"
-    : useColorModeValue("white.100", "white.700");
-  const textColor = isSelected ? "white" : useColorModeValue("black", "white");
+const Card: React.FC<CardProps> = ({
+  title,
+  description,
+  isSelected,
+  onSelect,
+}) => {
+  const { colorMode } = useColorMode();
+  const isDark = colorMode === "dark";
+  const bgColorDark = isDark ? "white.700" : "white.100";
+  const bgColor = isSelected ? "teal.500" : bgColorDark;
+  const textColorDark = isDark ? "white" : "black";
+
+  const textColor = isSelected ? "white" : textColorDark;
 
   return (
     <>

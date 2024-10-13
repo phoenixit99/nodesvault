@@ -1,11 +1,9 @@
 // components/Statistics.tsx
 import {
-  Box,
   SimpleGrid,
   Text,
   VStack,
   Image,
-  useColorModeValue,
   useColorMode,
 } from "@chakra-ui/react";
 
@@ -17,7 +15,7 @@ const stats = [
 ];
 
 const TopView = () => {
-  const { colorMode, toggleColorMode } = useColorMode();
+  const { colorMode } = useColorMode();
   const isDark = colorMode === "dark";
   return (
     <VStack spacing={4}>

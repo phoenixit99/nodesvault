@@ -1,9 +1,6 @@
 // app/page.tsx
 "use client";
-import { Link } from "@chakra-ui/next-js";
-import { Button, useToast, VStack, Center, HStack } from "@chakra-ui/react";
-import { useState } from "react";
-import { useCallback } from "react";
+import { Button, VStack, HStack } from "@chakra-ui/react";
 import Header from "./components/Header";
 import {
   Box,
@@ -19,20 +16,7 @@ import {
 import NetworkCard from "./components/NetworkCard";
 import Footer from "./components/Footer";
 import TopView from "./components/TopView";
-import {
-  HamburgerIcon,
-  CloseIcon,
-  EmailIcon,
-  ArrowForwardIcon,
-} from "@chakra-ui/icons";
 import { FaGithub, FaTelegramPlane, FaTwitter } from "react-icons/fa";
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Heading,
-} from "@chakra-ui/react";
 import HorizontalCardList from "./components/HorizontalCardList";
 
 const networks = [
@@ -78,24 +62,6 @@ const networks = [
   },
 ];
 export default function Page() {
-  const toast = useToast();
-  const [isBuying, setIsBuying] = useState(false);
-
-  const handleBuy = () => {
-    setIsBuying(true);
-
-    // Simulate the buy action (e.g., API call)
-    setTimeout(() => {
-      toast({
-        title: "Purchase Successful!",
-        description: "You have successfully bought the service.",
-        status: "success",
-        duration: 5000,
-        isClosable: true,
-      });
-      setIsBuying(false);
-    }, 2000);
-  };
   return (
     <>
       <Header />
@@ -108,10 +74,7 @@ export default function Page() {
         justify="center" // Vertical alignment (adjusts positioning within the stack)
       >
         <Box className="flex flex-col items-center justify-center h-screen bg-white">
-          <Text
-            fontSize="8xl"
-            fontWeight="extrabold"
-          >
+          <Text fontSize="8xl" fontWeight="extrabold">
             NodesVault
           </Text>
 
@@ -170,7 +133,7 @@ export default function Page() {
               <Button
                 leftIcon={<FaTwitter />}
                 colorScheme="teal"
- variant="outline"
+                variant="outline"
               >
                 Twitter
               </Button>
@@ -195,12 +158,11 @@ export default function Page() {
         </Box>
         <HorizontalCardList />
 
-
         <Box p={8} width={"100%"}>
           <Text fontSize="4xl" fontWeight="bold" mb={4} textAlign="left">
             Networks
           </Text>
-          <Tabs colorScheme='teal'>
+          <Tabs colorScheme="teal">
             <TabList>
               <Tab>All Active</Tab>
               <Tab>Mainnet (17)</Tab>
@@ -222,8 +184,7 @@ export default function Page() {
           </Tabs>
         </Box>
       </VStack>
-
-        <TopView />
+      <TopView />
       <Footer />
     </>
   );
