@@ -77,38 +77,30 @@ export default function Page() {
           <Text fontSize="8xl" fontWeight="extrabold">
             NodesVault
           </Text>
-
-          <HStack
-            textAlign={"center"}
-            align="center" // Horizontal alignment (center-aligns children)
-            justify="center" // Vertical alignment (adjusts positioning within th
-            width={"100%"}
-          >
-            {" "}
-            <Text fontSize="5xl" fontWeight="bold" textAlign="center">
-              Professional
-            </Text>
-            <Text
-              bgGradient="linear(to-l, #7928CA, #FF0080)"
-              bgClip="text"
-              fontSize="6xl"
-              fontWeight="extrabold"
-            >
-              validators
-            </Text>
-            <Text fontSize="5xl" fontWeight="bold" textAlign="center">
+          <Box>
+            <Text fontSize="5xl" fontWeight="bold">
+              Professional{" "}
+              <Box
+                 as="span"
+                 bgGradient="linear(to-l, #7928CA, #FF0080)"
+                 bgClip="text"
+                 fontSize="6xl"
+                 fontWeight="extrabold"
+              >
+                validators
+              </Box>
               ,optimized for maximum{" "}
-            </Text>
-            <Text
+              <Box
+               as="span"
               bgGradient="linear(to-l, #7928CA, #FF0080)"
               bgClip="text"
               fontSize="6xl"
               fontWeight="extrabold"
             >
               security
+            </Box>
             </Text>
-          </HStack>
-
+          </Box>
           <Text
             fontSize="lg"
             mt={4}
