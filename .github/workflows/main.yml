@@ -30,6 +30,6 @@ jobs:
           NEXT_PUBLIC_BASE_URL: ${{ secrets.NEXT_PUBLIC_BASE_URL }}  # Use the secret
 
       - name: Output environment variable (for testing purposes)
-        run: echo "Base URL is: $NEXT_PUBLIC_BASE_URL"
+        run: echo ${{ secrets.NEXT_PUBLIC_BASE_URL }}
 
       # Optionally, you can add a deployment step here if you're deploying the project after build
