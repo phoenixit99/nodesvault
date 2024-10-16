@@ -6,9 +6,12 @@ interface Network {
   apy: string;
   logo: string;
 }
+// Define the props for the NetworkCard component
+interface NetworkCardProps {
+  network: Network;
+}
 
-
-const NetworkCard = (network: Network) => {
+const NetworkCard : React.FC<NetworkCardProps> = ({ network }) => {
   return (
     <Box
       p={4}
