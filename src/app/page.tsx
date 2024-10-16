@@ -14,12 +14,20 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import NetworkCard from "./components/NetworkCard";
+// import {Network} from "./components/NetworkCard";
+
 import Footer from "./components/Footer";
 import TopView from "./components/TopView";
 import { FaGithub, FaTelegramPlane, FaTwitter } from "react-icons/fa";
 import HorizontalCardList from "./components/HorizontalCardList";
+// Define the interface for a network object
+interface Network {
+  name: string;
+  apy: string;
+  logo: string;
+}
 
-const networks = [
+const networks : Network[]  = [
   {
     name: "Blockx",
     apy: "soon",
@@ -167,9 +175,9 @@ export default function Page() {
                   templateColumns="repeat(auto-fill, minmax(300px, 1fr))"
                   gap={6}
                 >
-                  {networks.map((network, index) => (
+                  {/* {networks.map((network, index) => (
                     <NetworkCard key={index} network={network} />
-                  ))}
+                  ))} */}
                 </Grid>
               </TabPanel>
             </TabPanels>
@@ -180,4 +188,5 @@ export default function Page() {
       <Footer />
     </>
   );
+
 }

@@ -1,8 +1,14 @@
 // components/NetworkCard.tsx
 import { Box, Button, Text, VStack, HStack, Image } from '@chakra-ui/react'
+// Define the interface for a network object
+interface Network {
+  name: string;
+  apy: string;
+  logo: string;
+}
 
 
-const NetworkCard = ({ network }) => {
+const NetworkCard = (network: Network) => {
   return (
     <Box
       p={4}
