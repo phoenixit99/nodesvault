@@ -1,0 +1,35 @@
+name: Build Next.js
+
+on:
+  push:
+    branches:
+      - main  # Runs the workflow on pushes to the main branch
+  pull_request:
+    branches:
+      - main  # Runs the workflow for pull requests targeting the main branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'  # Specify Node.js version here
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build the project
+        run: npm run build
+        env:
+          NEXT_PUBLIC_BASE_URL: ${{ secrets.NEXT_PUBLIC_BASE_URL }}  # Use the secret
+
+      - name: Output environment variable (for testing purposes)
+        run: echo "Base URL is: $NEXT_PUBLIC_BASE_URL"
+
+      # Optionally, you can add a deployment step here if you're deploying the project after build
