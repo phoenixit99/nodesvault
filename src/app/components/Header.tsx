@@ -27,14 +27,14 @@ const Header = () => {
     >
       <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
         <HStack paddingLeft={20}>
-          <Image
-            src={
-              "https://itrocket.net/_next/image/?url=%2Fmainnet%2Fzetachain.jpg&w=256&q=75"
-            }
-            alt="user profile picture"
-            width={35}
-            height={35}
-          />
+          <Link href="/">
+            <Image
+              src={"./logo.jpg"}
+              alt="user profile picture"
+              width={35}
+              height={35}
+            />
+          </Link>
           <Text fontWeight="bold" fontSize="lg" color="#009688">
             NodesVault
           </Text>

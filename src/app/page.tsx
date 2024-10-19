@@ -1,6 +1,6 @@
 // app/page.tsx
 "use client";
-import { Button, VStack, HStack } from "@chakra-ui/react";
+import { Button, VStack } from "@chakra-ui/react";
 import Header from "./components/Header";
 import {
   Box,
@@ -14,7 +14,6 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import NetworkCard from "./components/NetworkCard";
-// import {Network} from "./components/NetworkCard";
 
 import Footer from "./components/Footer";
 import TopView from "./components/TopView";
@@ -117,10 +116,7 @@ export default function Page() {
             paddingLeft={300}
             paddingRight={300}
           >
-            NodesVault is a leading blockchain validator and contributor in
-            various ecosystems. With a few simple steps, you can delegate funds
-            and benefit from our enterprise-level infrastructure or explore
-            tools designed for node operators, developers, and analysts.
+At NodesVault, we pride ourselves on being a professional validator with an experienced and passionate team. Looking ahead, we aim to establish NodesVault as a key player in blockchain projects. Our commitment to high stability and 24/7 monitoring ensures that users can trust in the reliability and security we offer.
           </Text>
           <Box
             h="200px" // Set height of the Box

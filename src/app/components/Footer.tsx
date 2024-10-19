@@ -10,6 +10,8 @@ import {
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { FaGithub, FaTelegramPlane, FaTwitter } from "react-icons/fa";
+import Link from 'next/link';
+
 const Footer = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -37,9 +39,12 @@ const Footer = () => {
         zIndex="1" // Ensures the header stays above content when scrolling
         width={"100%"}
       >
+              <Link href="/about" passHref>
+
         <Text fontWeight="bold" fontSize="lg" padding={5}>
           About us
         </Text>
+        </Link>
       </Box>
 
       <Box
@@ -48,9 +53,12 @@ const Footer = () => {
         zIndex="1" // Ensures the header stays above content when scrolling
         width={"100%"}
       >
-        <Text fontWeight="bold" fontSize="lg" padding={5}>
+           <Link href="/security" passHref>
+           <Text fontWeight="bold" fontSize="lg" padding={5}>
           What is your security?
         </Text>
+           </Link>
+
       </Box>
 
       <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
