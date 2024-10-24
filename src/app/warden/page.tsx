@@ -100,8 +100,8 @@ const WardenHome = () => {
       {selectedCard == 1 && <Install />}
       {selectedCard == 2 && <Sync />} */}
             {(selectedCard == 0 || selectedCard == null) && <Text />}
-      {selectedCard == 1 && <Install />}
-      {selectedCard == 2 && <Sync />}
+      {/* {selectedCard == 1 && <Install />}
+      {selectedCard == 2 && <Sync />} */}
     </>
   );
 };
