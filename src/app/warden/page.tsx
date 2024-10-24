@@ -63,8 +63,9 @@ const handleCardSelect = (id: number) => {
             ))}
           </TabList>
         </Tabs>
-        <WardenContent></WardenContent>
       </Flex> 
+      <WardenContent></WardenContent>
+
     </>
   );
 }
