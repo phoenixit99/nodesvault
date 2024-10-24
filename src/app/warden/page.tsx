@@ -56,7 +56,7 @@ const CodeBox = ({ code, onCopy, hasCopied }) => (
 export default function Home() {
   const [selectedItem, setSelectedItem] = useState(menuItems[0]);
   return (
-    <>
+    <Box>
       <Header />
       <Flex width="100%">
          <Box width="250px" padding="20px" borderRight="1px solid teal">
@@ -227,7 +227,8 @@ export default function Home() {
           </Box>
         </Box> 
       </Flex>
-    </>
+      </Box>
+
   );
 }
 export function Install() {
