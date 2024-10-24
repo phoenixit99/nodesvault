@@ -14,6 +14,11 @@ import {
   Code,
   IconButton,
   useClipboard,
+  Tabs,
+  TabList,
+  Tab,
+  TabPanels,
+  TabPanel,
 } from "@chakra-ui/react";
 import { CheckCircleIcon, CopyIcon } from "@chakra-ui/icons";
 import Header from "../components/Header";
@@ -54,70 +59,52 @@ const CodeBox = ({ code, onCopy, hasCopied }) => (
   </Box>
 );
 export default function Home() {
-   const [selectedItem, setSelectedItem] = useState(menuItems[0]);
-
-   useEffect(() => {
-     // This effect runs only on the client
-     // Ensure selectedItem is valid
-     if (!menuItems.some(item => item.id === selectedItem.id)) {
-       setSelectedItem(menuItems[0]); // Fallback to the first item
-     }
-   }, []);
- 
- // copy the value to state here
+    const [selectedItemIndex, setSelectedItemIndex] = useState(0);
+    // copy the value to state here
   return (
     <div>
-    <Header />
-    <Flex width="100%">
-      <Box width="250px" padding="20px" borderRight="1px solid teal">
-        <VStack align="start" spacing={6}>
-          {menuItems.map((item) => (
-            <Link
-              key={item.id}
-              onClick={() => setSelectedItem(item)}
-              style={{ textDecoration: "none" }}
-            >
-              <Flex
-                align="center"
-                cursor="pointer"
-                bg={selectedItem.id === item.id ? "blue.500" : "transparent"}
-                color={selectedItem.id === item.id ? "white" : "black"}
-                p={2}
-                borderRadius="md"
-                _hover={{ bg: "blue.200", color: "white" }}
-              >
-                <Text fontSize="lg">{item.icon}</Text>
-                <Text ml={3} fontSize="md">{item.title}</Text>
-              </Flex>
-            </Link>
+      <Header />
+      <Flex width="100%">
+      <Tabs variant="enclosed" onChange={(index) => setSelectedItemIndex(index)}>
+        <TabList>
+          {menuItems.map((item, index) => (
+            <Tab key={item.id}>
+              <Text>{item.icon} {item.title}</Text>
+            </Tab>
           ))}
-        </VStack>
-      </Box>
+        </TabList>
 
-      <Box flex="1" p="20px">
-        <Text fontSize="3xl" fontWeight="bold">{selectedItem.title}</Text>
-        <Box mt="10">
-          {selectedItem.id === 0 && (
-            <WardenProtocolInfo />
-          )}
-          {selectedItem.id === 1 && <Install />}
-          {selectedItem.id === 2 && <Sync />}
-          {selectedItem.id === 3 && <Upgrade />}
-          {selectedItem.id === 4 && <Command />}
-          {selectedItem.id === 5 && <TwoCopyableBoxesSlind />}
-        </Box>
-      </Box>
-    </Flex>
-  </div>
+        <TabPanels>
+          {menuItems.map((item, index) => (
+            <TabPanel key={item.id}>
+              {selectedItemIndex === index && (
+                <ContentPanel selectedItem={item} />
+              )}
+            </TabPanel>
+          ))}
+        </TabPanels>
+      </Tabs>
+
+     
+     
+      </Flex>
+      </div>
   );
-  function WardenProtocolInfo() {
+}
+function ContentPanel({ selectedItem }) {
     return (
-      <Box maxW="800px" mx="auto" mt="10">
-        {/* Your Warden Protocol content here */}
+      <Box p="20px">
+        <Text fontSize="3xl" fontWeight="bold">{selectedItem.title}</Text>
+        {/* Render specific content based on selectedItem.id */}
+        {selectedItem.id === 0 && <Install />}
+        {selectedItem.id === 1 && <Install />}
+        {selectedItem.id === 2 && <Sync />}
+        {selectedItem.id === 3 && <Upgrade />}
+        {selectedItem.id === 4 && <Command />}
+        {selectedItem.id === 5 && <TwoCopyableBoxesSlind />}
       </Box>
     );
   }
-}
 export function Install() {
   const codeSnippets = [
     {
