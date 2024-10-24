@@ -48,6 +48,7 @@ const handleCardSelect = (id: number) => {
   return (
     <>
       <Header />
+      <WardenContent></WardenContent>
        <Flex width="100%">
         <Tabs
           variant="enclosed"
@@ -64,8 +65,6 @@ const handleCardSelect = (id: number) => {
           </TabList>
         </Tabs>
       </Flex> 
-      <WardenContent></WardenContent>
-
     </>
   );
 }
