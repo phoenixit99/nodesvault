@@ -1,11 +1,11 @@
-import {
-  Box,
-  Flex,
-  Text,
-  Icon,
-} from "@chakra-ui/react";
+import { Box, Flex, Text, Icon, VStack, useColorMode } from "@chakra-ui/react";
 import { ElementType, useState } from "react";
-import { FaNetworkWired, FaSearch, FaServicestack, FaSitemap } from "react-icons/fa";
+import {
+  FaNetworkWired,
+  FaSearch,
+  FaServicestack,
+  FaSitemap,
+} from "react-icons/fa";
 
 // Define the types for the props
 interface CardProps {
@@ -64,24 +64,41 @@ const HorizontalCardList = () => {
     </>
   );
 };
-const Card = ({ title, icon }: CardProps) => {
+
+const Card = ({ title, icon, isSelected, onSelect }: CardProps) => {
+  const { colorMode } = useColorMode();
+  const isDark = colorMode === "dark";
+  const bgColorDark = isDark ? "white.700" : "white.100";
+  const bgColor = isSelected ? "teal.500" : bgColorDark;
+  const textColorDark = isDark ? "white" : "black";
+  const textColor = isSelected ? "white" : textColorDark;
+  const iconColor = isSelected ? "white" : "teal.500";
+
   return (
-    <Box
-      borderWidth="1px"
-      borderRadius="lg"
-      overflow="hidden"
-      boxShadow="lg"
-      p="4"
-      maxW="sm"
-      textAlign="center"
-    >
-      <Icon as={icon as ElementType}  boxSize={12} color="teal.500" />
-      <Text mt="4" fontSize="xl" fontWeight="bold">
-        {title}
-      </Text>
-    </Box>
+    <>
+      <Box
+        onClick={onSelect}
+        bg={bgColor}
+        color={textColor}
+        borderRadius="md"
+        p={4}
+        width="200px"
+        height="150px"
+        cursor="pointer"
+        boxShadow="lg"
+        _hover={{ boxShadow: "xl" }}
+        transition="background-color 0.3s"
+      >
+        <VStack align="center">
+          <Icon as={icon as ElementType} boxSize={12} color={iconColor} />
+
+          <Text fontSize="lg" textAlign={"center"} fontWeight="bold">
+            {title}
+          </Text>
+        </VStack>
+      </Box>
+    </>
   );
 };
-
 
 export default HorizontalCardList;
