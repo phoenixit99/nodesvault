@@ -88,11 +88,10 @@ const CodeBox: React.FC<CodeBoxProps> = ({ code, onCopy, hasCopied }) => (
 // }
 
 const WardenHome = () => {
-  const [selectedCard, setSelectedCard] = useState<number | null>(null);
-
-  const handleCardSelect = (id: number) => {
-    setSelectedCard(id);
-  };
+  // const [selectedCard, setSelectedCard] = useState<number | null>(null);
+  // const handleCardSelect = (id: number) => {
+  //   setSelectedCard(id);
+  // };
 
   return (
      <WardenContent />
