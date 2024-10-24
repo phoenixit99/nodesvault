@@ -84,12 +84,13 @@ const ContentPanel: React.FC<ContentPanelProps> = ({ selectedItem }) => {
       <Text fontSize="3xl" fontWeight="bold">
         {selectedItem.title}
       </Text>
-      {selectedItem.id === 0 && <WardenContent />}
+      {/* {selectedItem.id === 0 && <WardenContent />}
       {selectedItem.id === 1 && <WardenContent />}
       {selectedItem.id === 2 && <WardenContent />}
       {selectedItem.id === 3 && <WardenContent />}
-      {selectedItem.id === 4 && <WardenContent />}
-      {selectedItem.id === 5 && <WardenContent />}
+      {selectedItem.id === 4 && <WardenContent />} */}
+      {/* {selectedItem.id === 5 && <WardenContent />} */}
+      <WardenContent />
     </Box>
   );
 }
