@@ -1,4 +1,5 @@
 // pages/index.tsx
+"use client";
 import {
   Box,
   Heading,
@@ -94,14 +95,7 @@ const WardenHome = () => {
   };
 
   return (
-    <>
-      {/* {(selectedCard == 0 || selectedCard == null) && <WardenContent />}
-      {selectedCard == 1 && <Install />}
-      {selectedCard == 2 && <Sync />} */}
-            {(selectedCard == 0 || selectedCard == null) && <Text />}
-      {/* {selectedCard == 1 && <Install />}
-      {selectedCard == 2 && <Sync />} */}
-    </>
+     <WardenContent />
   );
 };
 
