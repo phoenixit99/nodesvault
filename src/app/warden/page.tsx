@@ -79,10 +79,7 @@ const handleCardSelect = (id: number) => {
   return (
     <>
       <Header />
-      <WardenContent></WardenContent>
-        <Install></Install>
-       {/* <Flex width="100%">
-        <Tabs
+      <Tabs
           variant="enclosed"
           onChange={(index) => handleCardSelect(index)}
         >
@@ -90,12 +87,15 @@ const handleCardSelect = (id: number) => {
             {menuItems.map((item, ) => (
               <Tab key={item.id}>
                 <Text>
-                  {item.icon} {item.title}
-                </Text>
+1212121                </Text>
               </Tab>
             ))}
           </TabList>
         </Tabs>
+      <WardenContent></WardenContent>
+       <Install></Install>
+       {/* <Flex width="100%">
+      
       </Flex>  */}
     </>
   );
