@@ -15,11 +15,21 @@ import Header from "../components/Header";
 import { useState } from "react";
 
 export default function Home() {
-    const [selectedItemIndex, setSelectedItemIndex] = useState<number | null>(null);
+  const [selectedItemIndex, setSelectedItemIndex] = useState<number | null>(
+    null
+  );
 
   return (
     <>
       <Header />
+      <WardenContent></WardenContent>
+    </>
+  );
+}
+
+const WardenContent = () => {
+  return (
+    <>
       <Box maxW="800px" mx="auto" mt="10">
         {/* Status Indicator and Title */}
         <Stack direction="row" align="center">
@@ -96,7 +106,6 @@ export default function Home() {
           </ListItem>
         </List>
 
-
         <Heading size="md" mt="8">
           NodesVault Support:
         </Heading>
@@ -147,4 +156,4 @@ export default function Home() {
       <Box boxSize={100} />
     </>
   );
-}
+};
