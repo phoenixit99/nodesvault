@@ -62,11 +62,11 @@ export default function Home() {
     const [selectedItemIndex, setSelectedItemIndex] = useState(0);
     // copy the value to state here
   return (
-    <div>
+    <>
       <Header />
-      <Flex width="100%">
-      <Tabs variant="enclosed" onChange={(index) => setSelectedItemIndex(index)}>
-        <TabList>
+      {/* <Flex width="100%"> */}
+      {/* <Tabs variant="enclosed" onChange={(index) => setSelectedItemIndex(index)}> */}
+        {/* <TabList>
           {menuItems.map((item, index) => (
             <Tab key={item.id}>
               <Text>{item.icon} {item.title}</Text>
@@ -82,13 +82,10 @@ export default function Home() {
               )}
             </TabPanel>
           ))}
-        </TabPanels>
-      </Tabs>
-
-     
-     
-      </Flex>
-      </div>
+        </TabPanels> */}
+      {/* </Tabs> */}
+      {/* </Flex> */}
+      </>
   );
 }
 function ContentPanel({ selectedItem }) {
