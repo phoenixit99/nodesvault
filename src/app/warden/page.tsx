@@ -13,10 +13,14 @@ import {
   Tabs,
   TabList,
   Tab,
+  useClipboard,
+  Code,
+  IconButton,
 } from "@chakra-ui/react";
 import { CheckCircleIcon } from "@chakra-ui/icons";
 import Header from "../components/Header";
 import { useState } from "react";
+
 interface MenuItem {
     id: number; // Unique identifier
     title: string; // Title of the menu item
@@ -38,6 +42,33 @@ interface MenuItem {
     interface ContentPanelProps {
       selectedItem: MenuItem;
     }
+  
+  const CodeBox : React.FC<CodeBoxProps> = ({ code, onCopy, hasCopied }) => (
+    <Box
+      position="relative"
+      width="100%"
+      p={4}
+      border="1px solid"
+      borderColor="gray.200"
+      borderRadius="md"
+    >
+      <Code display="block" whiteSpace="pre-wrap">
+        {code}
+      </Code>
+      <IconButton
+        aria-label="Copy code"
+        icon={<CopyIcon />}
+        size="sm"
+        onClick={onCopy}
+        position="absolute"
+        top="8px"
+        right="8px"
+        variant="outline"
+        borderRadius="full"
+      />
+      {hasCopied && <Text color="green.500">Copied to clipboard!</Text>}
+    </Box>
+  );
 export default function Home() {
   const [selectedItemIndex, setSelectedItemIndex] = useState<number | null>(
     null
