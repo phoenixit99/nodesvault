@@ -54,7 +54,7 @@ const CodeBox = ({ code, onCopy, hasCopied }) => (
   </Box>
 );
 export default function Home() {
-  const [selectedItem, setSelectedItem] = useState(menuItems[0]);
+  const [selectedItem, setSelectedItem] = useState(menuItems[-1]);
   return (
     <>
       <Header />
@@ -87,7 +87,7 @@ export default function Home() {
         </Box> 
 
      
-        {/* <Box flex="1" p="20px">
+        <Box flex="1" p="20px">
           <Text fontSize="3xl" fontWeight="bold">
             {selectedItem.title}
           </Text>
@@ -225,7 +225,7 @@ export default function Home() {
             {selectedItem.id === 3 && <Command />}
             {selectedItem.id === 4 && <TwoCopyableBoxesSlind />}
           </Box>
-        </Box> */}
+        </Box> 
       </Flex>
     </>
   );
