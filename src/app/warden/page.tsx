@@ -74,17 +74,17 @@ const CodeBox : React.FC<CodeBoxProps> = ({ code, onCopy, hasCopied }) => (
 );
 export default function Wardenpage() {
 //  const [selectedItemIndex, setSelectedItemIndex] = useState(0);
-const [selectedItemIndex, setSelectedItemIndex] = useState<number | null>(null);
+// const [selectedItemIndex, setSelectedItemIndex] = useState<number | null>(null);
 
-const handleCardSelect = (id: number) => {
-    setSelectedItemIndex(id);
-};
+// const handleCardSelect = (id: number) => {
+//     setSelectedItemIndex(id);
+// };
 
 // copy the value to state here
   return (
     <>
       <Header />
-      <Flex width="100%">
+      {/* <Flex width="100%">
         <Tabs
           variant="enclosed"
           onChange={(index) => handleCardSelect(index)}
@@ -109,7 +109,7 @@ const handleCardSelect = (id: number) => {
             ))}
           </TabPanels>
         </Tabs>
-      </Flex>
+      </Flex> */}
     </>
   );
 }
