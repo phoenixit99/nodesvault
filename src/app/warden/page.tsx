@@ -9,20 +9,62 @@ import {
   Link,
   Icon,
   Stack,
+  Flex,
+  Tabs,
+  TabList,
+  Tab,
 } from "@chakra-ui/react";
 import { CheckCircleIcon } from "@chakra-ui/icons";
 import Header from "../components/Header";
 import { useState } from "react";
-
+interface MenuItem {
+    id: number; // Unique identifier
+    title: string; // Title of the menu item
+    icon: string; // Icon representation (could also be a React element if needed)
+  }
+  interface CodeBoxProps {
+      code: string;
+      onCopy: () => void;
+      hasCopied: boolean;
+    }
+  const menuItems: MenuItem[] = [
+    { id: 0, title: "Daskboard", icon: "💻" },
+    { id: 1, title: "Installation", icon: "⚙️" },
+    { id: 2, title: "Sync", icon: "🚀" },
+    { id: 3, title: "Upgrade", icon: "⬆️" },
+    { id: 4, title: "Command", icon: "💻" },
+    { id: 5, title: "Slinky", icon: "🔧" },
+  ];
+    interface ContentPanelProps {
+      selectedItem: MenuItem;
+    }
 export default function Home() {
   const [selectedItemIndex, setSelectedItemIndex] = useState<number | null>(
     null
   );
-
+const handleCardSelect = (id: number) => {
+    setSelectedItemIndex(id);
+};
   return (
     <>
       <Header />
       <WardenContent></WardenContent>
+       <Flex width="100%">
+        <Tabs
+          variant="enclosed"
+          onChange={(index) => handleCardSelect(index)}
+        >
+          <TabList>
+            {menuItems.map((item, ) => (
+              <Tab key={item.id}>
+                <Text>
+                  {item.icon} {item.title}
+                </Text>
+              </Tab>
+            ))}
+          </TabList>
+        </Tabs>
+      </Flex> 
     </>
   );
 }
