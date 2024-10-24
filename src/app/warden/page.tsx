@@ -76,7 +76,7 @@ export default function Wardenpage() {
 const [selectedItemIndex, setSelectedItemIndex] = useState<number | null>(null);
 
 const handleCardSelect = (id: number) => {
-  
+
 };
 
 // copy the value to state here
@@ -295,8 +295,6 @@ function Install() {
       title: "Check sync: (False -> Done)",
       code: `
     wardend status 2>&1 | jq .SyncInfo.catching_up
-
-
           `,
     },
   ];
@@ -306,12 +304,12 @@ function Install() {
       {codeSnippets.map(({ title, code }, index) => {
         const { hasCopied, onCopy } = useClipboard(code);
         return (
-          <div key={index}>
+          <>
             <Text fontSize="1xl" fontWeight="bold">
               {title}
             </Text>
             <CodeBox code={code} onCopy={onCopy} hasCopied={hasCopied} />
-          </div>
+          </>
         );
       })}
     </Flex>
@@ -372,12 +370,12 @@ function Sync() {
       {codeSnippets.map(({ title, code }, index) => {
         const { hasCopied, onCopy } = useClipboard(code);
         return (
-          <div key={index}>
+          <>
             <Text fontSize="1xl" fontWeight="bold">
               {title}
             </Text>
             <CodeBox code={code} onCopy={onCopy} hasCopied={hasCopied} />
-          </div>
+          </>
         );
       })}
     </Flex>
@@ -421,12 +419,12 @@ function Upgrade() {
       {codeSnippets.map(({ title, code }, index) => {
         const { hasCopied, onCopy } = useClipboard(code);
         return (
-          <div key={index}>
+          <>
             <Text fontSize="lg" fontWeight="bold">
               {title}
             </Text>
             <CodeBox code={code} onCopy={onCopy} hasCopied={hasCopied} />
-          </div>
+          </>
         );
       })}
     </Flex>
@@ -542,12 +540,12 @@ function Command() {
       {codeSnippets.map(({ title, code }, index) => {
         const { hasCopied, onCopy } = useClipboard(code);
         return (
-          <div key={index}>
+          <>
             <Text fontSize="1xl" fontWeight="bold">
               {title}
             </Text>
             <CodeBox code={code} onCopy={onCopy} hasCopied={hasCopied} />
-          </div>
+          </>
         );
       })}
     </Flex>
@@ -605,12 +603,12 @@ function TwoCopyableBoxesSlind() {
       {codeSnippets.map(({ title, code }, index) => {
         const { hasCopied, onCopy } = useClipboard(code);
         return (
-          <div key={index}>
+          <>
             <Text fontSize="1xl" fontWeight="bold">
               {title}
             </Text>
             <CodeBox code={code} onCopy={onCopy} hasCopied={hasCopied} />
-          </div>
+          </>
         );
       })}
     </Flex>
