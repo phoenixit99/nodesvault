@@ -63,7 +63,7 @@ export default function Home() {
     // copy the value to state here
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       {/* <Flex width="100%"> */}
       {/* <Tabs variant="enclosed" onChange={(index) => setSelectedItemIndex(index)}> */}
         {/* <TabList>
