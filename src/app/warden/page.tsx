@@ -17,7 +17,7 @@ import {
 } from "@chakra-ui/react";
 import { CheckCircleIcon, CopyIcon } from "@chakra-ui/icons";
 import Header from "../components/Header";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const menuItems = [
   { id: 0, title: "Daskboard", icon: "💻" },
@@ -55,13 +55,15 @@ const CodeBox = ({ code, onCopy, hasCopied }) => (
 );
 export default function Home() {
   const [selectedItem, setSelectedItem] = useState(menuItems[0]);
+
+ // copy the value to state here
   return (
-    <Box>
+    <div>
       <Header />
       <Flex width="100%">
          <Box width="250px" padding="20px" borderRight="1px solid teal">
           <VStack align="start" spacing={6}>
-            {/* {menuItems.map((item) => (
+          {menuItems.map((item) => (
               <Link
                 key={item.id}
                 onClick={() => setSelectedItem(item)}
@@ -82,7 +84,7 @@ export default function Home() {
                   </Text>
                 </Flex>
               </Link>
-            ))} */}
+            ))} 
           </VStack>
         </Box> 
 
@@ -227,7 +229,7 @@ export default function Home() {
           </Box>
         </Box> 
       </Flex>
-      </Box>
+      </div>
   );
 }
 export function Install() {
