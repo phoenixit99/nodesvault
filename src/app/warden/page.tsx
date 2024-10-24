@@ -13,8 +13,6 @@ import {
   Tabs,
   TabList,
   Tab,
-  TabPanels,
-  TabPanel,
 } from "@chakra-ui/react";
 import { CheckCircleIcon } from "@chakra-ui/icons";
 import Header from "../components/Header";
@@ -50,6 +48,7 @@ const handleCardSelect = (id: number) => {
   return (
     <>
       <Header />
+      <WardenContent></WardenContent>
        <Flex width="100%">
         <Tabs
           variant="enclosed"
@@ -64,36 +63,12 @@ const handleCardSelect = (id: number) => {
               </Tab>
             ))}
           </TabList>
-          {/* <TabPanels>
-            {menuItems.map((item, index) => (
-              <TabPanel key={item.id}>
-                {selectedItemIndex === index && (
-                  <ContentPanel selectedItem={item} />
-                )}
-              </TabPanel>
-            ))}
-          </TabPanels> */}
         </Tabs>
       </Flex> 
     </>
   );
 }
-const ContentPanel: React.FC<ContentPanelProps> = ({ selectedItem }) => {
-    return (
-    <Box p="20px">
-      <Text fontSize="3xl" fontWeight="bold">
-        {selectedItem.title}
-      </Text>
-      {/* {selectedItem.id === 0 && <WardenContent />}
-      {selectedItem.id === 1 && <WardenContent />}
-      {selectedItem.id === 2 && <WardenContent />}
-      {selectedItem.id === 3 && <WardenContent />}
-      {selectedItem.id === 4 && <WardenContent />} */}
-      {/* {selectedItem.id === 5 && <WardenContent />} */}
-      <WardenContent />
-    </Box>
-  );
-}
+
 const WardenContent = () => {
   return (
     <>
