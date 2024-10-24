@@ -61,7 +61,7 @@ export default function Home() {
       <Flex width="100%">
          <Box width="250px" padding="20px" borderRight="1px solid teal">
           <VStack align="start" spacing={6}>
-            {menuItems.map((item) => (
+            {/* {menuItems.map((item) => (
               <Link
                 key={item.id}
                 onClick={() => setSelectedItem(item)}
@@ -82,7 +82,7 @@ export default function Home() {
                   </Text>
                 </Flex>
               </Link>
-            ))}
+            ))} */}
           </VStack>
         </Box> 
 
@@ -228,7 +228,6 @@ export default function Home() {
         </Box> 
       </Flex>
       </Box>
-
   );
 }
 export function Install() {
