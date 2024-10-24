@@ -48,8 +48,8 @@ const handleCardSelect = (id: number) => {
   return (
     <>
       <Header />
-      {/* <WardenContent></WardenContent> */}
-       <Flex width="100%">
+      <WardenContent></WardenContent>
+       {/* <Flex width="100%">
         <Tabs
           variant="enclosed"
           onChange={(index) => handleCardSelect(index)}
@@ -64,7 +64,7 @@ const handleCardSelect = (id: number) => {
             ))}
           </TabList>
         </Tabs>
-      </Flex> 
+      </Flex>  */}
     </>
   );
 }
