@@ -5,13 +5,15 @@ import {
   VStack,
   Image,
   useColorMode,
+  Icon,
 } from "@chakra-ui/react";
 import { useState } from "react";
+import { FaGlobe, FaNetworkWired, FaSearch, FaServicestack, FaSitemap } from "react-icons/fa";
 
 // Define the types for the props
 interface CardProps {
   title: string;
-  description: string;
+  icon: unknown;
   isSelected: boolean;
   onSelect: () => void; // Function type for onSelect, no arguments and no return value
 }
@@ -20,26 +22,22 @@ const cardData = [
   {
     id: 0,
     title: "Networks",
-    description:
-      "https://raw.githubusercontent.com/Loopple/loopple-public-assets/main/logos/supabase-logo.png",
+    icon: FaNetworkWired,
   },
   {
     id: 1,
     title: "Services",
-    description:
-      "https://itrocket.net/_next/image/?url=%2Ftestnet%2Ftaiko.jpg&w=256&q=75",
+    icon: FaServicestack,
   },
   {
     id: 2,
     title: "Explorer",
-    description:
-      "https://itrocket.net/_next/image/?url=%2Ftestnet%2Fzenrock.png&w=256&q=75",
+    icon: FaSearch,
   },
   {
     id: 3,
     title: "IBC",
-    description:
-      "https://itrocket.net/_next/image/?url=%2Ftestnet%2Fswisstronic.jpg&w=256&q=75",
+    icon: FaSitemap,
   },
 ];
 
@@ -60,7 +58,7 @@ const HorizontalCardList = () => {
           <Card
             key={card.id}
             title={card.title}
-            description={card.description}
+            icon={card.icon}
             isSelected={card.id === selectedCard}
             onSelect={() => handleCardSelect(card.id)}
           />
@@ -69,51 +67,24 @@ const HorizontalCardList = () => {
     </>
   );
 };
-
-const Card: React.FC<CardProps> = ({
-  title,
-  description,
-  isSelected,
-  onSelect,
-}) => {
-  const { colorMode } = useColorMode();
-  const isDark = colorMode === "dark";
-  const bgColorDark = isDark ? "white.700" : "white.100";
-  const bgColor = isSelected ? "teal.500" : bgColorDark;
-  const textColorDark = isDark ? "white" : "black";
-
-  const textColor = isSelected ? "white" : textColorDark;
-
+const Card = ({ title, icon }: CardProps) => {
   return (
-    <>
-      <Box
-        onClick={onSelect}
-        bg={bgColor}
-        color={textColor}
-        borderRadius="md"
-        p={4}
-        width="200px"
-        height="150px"
-        cursor="pointer"
-        boxShadow="lg"
-        _hover={{ boxShadow: "xl" }}
-        transition="background-color 0.3s"
-      >
-        <VStack align="center">
-          <Image
-            src={description}
-            alt={"network.name"}
-            borderRadius="full"
-            boxSize="80px"
-          />
-
-          <Text fontSize="lg" textAlign={"center"} fontWeight="bold">
-            {title}
-          </Text>
-        </VStack>
-      </Box>
-    </>
+    <Box
+      borderWidth="1px"
+      borderRadius="lg"
+      overflow="hidden"
+      boxShadow="lg"
+      p="4"
+      maxW="sm"
+      textAlign="center"
+    >
+      <Icon as={icon} boxSize={12} color="teal.500" />
+      <Text mt="4" fontSize="xl" fontWeight="bold">
+        {title}
+      </Text>
+    </Box>
   );
 };
+
 
 export default HorizontalCardList;
