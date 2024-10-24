@@ -1,5 +1,13 @@
 // components/NetworkCard.tsx
-import { Box, Button, Text, VStack, HStack, Image } from '@chakra-ui/react'
+import {
+  Box,
+  Button,
+  Text,
+  VStack,
+  HStack,
+  Image,
+  Link,
+} from "@chakra-ui/react";
 // Define the interface for a network object
 interface Network {
   name: string;
@@ -11,7 +19,7 @@ interface NetworkCardProps {
   network: Network;
 }
 
-const NetworkCard : React.FC<NetworkCardProps> = ({ network }) => {
+const NetworkCard: React.FC<NetworkCardProps> = ({ network }) => {
   return (
     <Box
       p={4}
@@ -24,18 +32,34 @@ const NetworkCard : React.FC<NetworkCardProps> = ({ network }) => {
     >
       <VStack spacing={4}>
         <Image src={network.logo} alt={network.name} boxSize="50px" />
-        <Text fontSize="xl" fontWeight="bold">{network.name}</Text>
+        <Link href="/warden">
+          {" "}
+          <Text fontSize="xl" fontWeight="bold">
+            {network.name}
+          </Text>
+        </Link>
         <Text color="black.500">APY: {network.apy}</Text>
 
-        <Text color="black.500" cursor="pointer">Delegate funds</Text>
+        <Text color="black.500" cursor="pointer">
+          Delegate funds
+        </Text>
 
         <HStack spacing={2}>
-          <Button  size="sm" colorScheme="teal">Services</Button>
-          <Button size="sm" colorScheme="teal">Explorer</Button>
+          <Button size="sm" colorScheme="teal">
+            {" "}
+            <Link href="https://explorer.nodesvault.com/warden-testnet/">
+              Services
+            </Link>
+          </Button>
+          <Button size="sm" colorScheme="teal">
+            <Link href="https://explorer.nodesvault.com/warden-testnet/">
+              Explorer
+            </Link>
+          </Button>
         </HStack>
       </VStack>
     </Box>
-  )
-}
+  );
+};
 
-export default NetworkCard
+export default NetworkCard;

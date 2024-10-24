@@ -26,11 +26,11 @@ interface Network {
   logo: string;
 }
 
-const networks : Network[]  = [
+const networks: Network[] = [
   {
-    name: "Blockx",
+    name: "Warden",
     apy: "soon",
-    logo: "https://itrocket.net/_next/image/?url=%2Fmainnet%2Fblockx.jpg&w=256&q=75",
+    logo: "https://itrocket.net/_next/image/?url=%2Ftestnet%2Fwarden.png&w=96&q=75",
   },
   {
     name: "Celestia",
@@ -88,24 +88,24 @@ export default function Page() {
             <Text fontSize="5xl" fontWeight="bold">
               Professional{" "}
               <Box
-                 as="span"
-                 bgGradient="linear(to-l, #7928CA, #FF0080)"
-                 bgClip="text"
-                 fontSize="6xl"
-                 fontWeight="extrabold"
+                as="span"
+                bgGradient="linear(to-l, #7928CA, #FF0080)"
+                bgClip="text"
+                fontSize="6xl"
+                fontWeight="extrabold"
               >
                 validators
               </Box>
               ,optimized for maximum{" "}
               <Box
-               as="span"
-              bgGradient="linear(to-l, #7928CA, #FF0080)"
-              bgClip="text"
-              fontSize="6xl"
-              fontWeight="extrabold"
-            >
-              security
-            </Box>
+                as="span"
+                bgGradient="linear(to-l, #7928CA, #FF0080)"
+                bgClip="text"
+                fontSize="6xl"
+                fontWeight="extrabold"
+              >
+                security
+              </Box>
             </Text>
           </Box>
           <Text
@@ -116,7 +116,11 @@ export default function Page() {
             paddingLeft={300}
             paddingRight={300}
           >
-At NodesVault, we pride ourselves on being a professional validator with an experienced and passionate team. Looking ahead, we aim to establish NodesVault as a key player in blockchain projects. Our commitment to high stability and 24/7 monitoring ensures that users can trust in the reliability and security we offer.
+            At NodesVault, we pride ourselves on being a professional validator
+            with an experienced and passionate team. Looking ahead, we aim to
+            establish NodesVault as a key player in blockchain projects. Our
+            commitment to high stability and 24/7 monitoring ensures that users
+            can trust in the reliability and security we offer.
           </Text>
           <Box
             h="200px" // Set height of the Box
@@ -161,8 +165,6 @@ At NodesVault, we pride ourselves on being a professional validator with an expe
           <Tabs colorScheme="teal">
             <TabList>
               <Tab>All Active</Tab>
-              <Tab>Mainnet (17)</Tab>
-              <Tab>Testnet (37)</Tab>
             </TabList>
 
             <TabPanels>
@@ -173,7 +175,7 @@ At NodesVault, we pride ourselves on being a professional validator with an expe
                 >
                   {networks.map((network, index) => (
                     <NetworkCard key={index} network={network} />
-                  ))} 
+                  ))}
                 </Grid>
               </TabPanel>
             </TabPanels>
@@ -184,5 +186,4 @@ At NodesVault, we pride ourselves on being a professional validator with an expe
       <Footer />
     </>
   );
-
 }
