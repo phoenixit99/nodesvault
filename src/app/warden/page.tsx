@@ -1,5 +1,4 @@
 // pages/index.tsx
-"use client";
 import {
   Box,
   Heading,
