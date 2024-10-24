@@ -19,8 +19,7 @@ import {
 } from "@chakra-ui/react";
 import { CheckCircleIcon, CopyIcon } from "@chakra-ui/icons";
 import Header from "../components/Header";
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
 interface MenuItem {
   id: number; // Unique identifier
   title: string; // Title of the menu item
@@ -97,9 +96,12 @@ const WardenHome = () => {
 
   return (
     <>
-      <Install />
-      <Sync />
-      <WardenContent />
+      {/* {(selectedCard == 0 || selectedCard == null) && <WardenContent />}
+      {selectedCard == 1 && <Install />}
+      {selectedCard == 2 && <Sync />} */}
+            {(selectedCard == 0 || selectedCard == null) && <Text />}
+      {selectedCard == 1 && <Install />}
+      {selectedCard == 2 && <Sync />}
     </>
   );
 };
@@ -235,7 +237,7 @@ const WardenContent = () => {
   );
 };
 
-const Install =  () => {
+const Install = () => {
   const codeSnippets = [
     {
       title: "Install dependencies:",
@@ -423,7 +425,7 @@ const Install =  () => {
       })}
     </Flex>
   );
-}
+};
 
 const Sync = () => {
   const codeSnippets = [
@@ -489,7 +491,7 @@ const Sync = () => {
       })}
     </Flex>
   );
-}
+};
 
 const Upgrade = () => {
   const codeSnippets = [
@@ -538,9 +540,9 @@ const Upgrade = () => {
       })}
     </Flex>
   );
-}
+};
 
-const Command =() =>  {
+const Command = () => {
   const codeSnippets = [
     {
       title: "Wallet Commands:",
@@ -659,8 +661,8 @@ const Command =() =>  {
       })}
     </Flex>
   );
-}
-const TwoCopyableBoxesSlind = () =>  {
+};
+const TwoCopyableBoxesSlind = () => {
   const codeSnippets = [
     {
       title: "Download Binary Slinky:",
@@ -722,7 +724,6 @@ const TwoCopyableBoxesSlind = () =>  {
       })}
     </Flex>
   );
-}
-
+};
 
 export default WardenHome;
