@@ -20,12 +20,12 @@ import Header from "../components/Header";
 import { useState } from "react";
 
 const menuItems = [
-  { id: -1, title: "Daskboard", icon: "💻" },
-  { id: 0, title: "Installation", icon: "⚙️" },
-  { id: 1, title: "Sync", icon: "🚀" },
-  { id: 2, title: "Upgrade", icon: "⬆️" },
-  { id: 3, title: "Command", icon: "💻" },
-  { id: 4, title: "Slinky", icon: "🔧" },
+  { id: 0, title: "Daskboard", icon: "💻" },
+  { id: 1, title: "Installation", icon: "⚙️" },
+  { id: 2, title: "Sync", icon: "🚀" },
+  { id: 3, title: "Upgrade", icon: "⬆️" },
+  { id: 4, title: "Command", icon: "💻" },
+  { id: 5, title: "Slinky", icon: "🔧" },
 ];
 const CodeBox = ({ code, onCopy, hasCopied }) => (
   <Box
@@ -54,7 +54,7 @@ const CodeBox = ({ code, onCopy, hasCopied }) => (
   </Box>
 );
 export default function Home() {
-  const [selectedItem, setSelectedItem] = useState(menuItems[-1]);
+  const [selectedItem, setSelectedItem] = useState(menuItems[0]);
   return (
     <>
       <Header />
@@ -92,7 +92,7 @@ export default function Home() {
             {selectedItem.title}
           </Text>
           <Box mt="10">
-            {selectedItem.id == -1 && (
+            {selectedItem.id == 0 && (
               <>
                 <Box maxW="800px" mx="auto" mt="10">
                   <Stack direction="row" align="center">
@@ -219,11 +219,11 @@ export default function Home() {
                 <Box boxSize={100} />
               </>
             )}
-            {selectedItem.id === 0 && <Install />}
-            {selectedItem.id === 1 && <Sync />}
-            {selectedItem.id === 2 && <Upgrade />}
-            {selectedItem.id === 3 && <Command />}
-            {selectedItem.id === 4 && <TwoCopyableBoxesSlind />}
+            {selectedItem.id === 1 && <Install />}
+            {selectedItem.id === 2 && <Sync />}
+            {selectedItem.id === 3 && <Upgrade />}
+            {selectedItem.id === 4 && <Command />}
+            {selectedItem.id === 5 && <TwoCopyableBoxesSlind />}
           </Box>
         </Box> 
       </Flex>
