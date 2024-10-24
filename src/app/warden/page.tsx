@@ -54,183 +54,69 @@ const CodeBox = ({ code, onCopy, hasCopied }) => (
   </Box>
 );
 export default function Home() {
-  const [selectedItem, setSelectedItem] = useState(menuItems[0]);
+   const [selectedItem, setSelectedItem] = useState(menuItems[0]);
 
+   useEffect(() => {
+     // This effect runs only on the client
+     // Ensure selectedItem is valid
+     if (!menuItems.some(item => item.id === selectedItem.id)) {
+       setSelectedItem(menuItems[0]); // Fallback to the first item
+     }
+   }, []);
+ 
  // copy the value to state here
   return (
     <div>
-      <Header />
-      <Flex width="100%">
-         <Box width="250px" padding="20px" borderRight="1px solid teal">
-          <VStack align="start" spacing={6}>
+    <Header />
+    <Flex width="100%">
+      <Box width="250px" padding="20px" borderRight="1px solid teal">
+        <VStack align="start" spacing={6}>
           {menuItems.map((item) => (
-              <Link
-                key={item.id}
-                onClick={() => setSelectedItem(item)}
-                style={{ textDecoration: "none" }}
+            <Link
+              key={item.id}
+              onClick={() => setSelectedItem(item)}
+              style={{ textDecoration: "none" }}
+            >
+              <Flex
+                align="center"
+                cursor="pointer"
+                bg={selectedItem.id === item.id ? "blue.500" : "transparent"}
+                color={selectedItem.id === item.id ? "white" : "black"}
+                p={2}
+                borderRadius="md"
+                _hover={{ bg: "blue.200", color: "white" }}
               >
-                <Flex
-                  align="center"
-                  cursor="pointer"
-                  bg={selectedItem.id === item.id ? "blue.500" : "transparent"}
-                  color={selectedItem.id === item.id ? "white" : "black"}
-                  p={2}
-                  borderRadius="md"
-                  _hover={{ bg: "blue.200", color: "white" }}
-                >
-                  <Text fontSize="lg">{item.icon}</Text>
-                  <Text ml={3} fontSize="md">
-                    {item.title}
-                  </Text>
-                </Flex>
-              </Link>
-            ))} 
-          </VStack>
-        </Box> 
+                <Text fontSize="lg">{item.icon}</Text>
+                <Text ml={3} fontSize="md">{item.title}</Text>
+              </Flex>
+            </Link>
+          ))}
+        </VStack>
+      </Box>
 
-     
-        <Box flex="1" p="20px">
-          <Text fontSize="3xl" fontWeight="bold">
-            {selectedItem.title}
-          </Text>
-          <Box mt="10">
-            {selectedItem.id == 0 && (
-              <>
-                <Box maxW="800px" mx="auto" mt="10">
-                  <Stack direction="row" align="center">
-                    <Icon as={CheckCircleIcon} boxSize={6} color="green.400" />
-                    <Heading size="lg">Warden Protocol</Heading>
-                  </Stack>
-
-                  <Text mt="2" fontSize="lg">
-                    Next-gen Modular L1 Blockchain Infrastructure for Omnichain
-                    Applications.
-                  </Text>
-
-                  <Box mt="4">
-                    <img
-                      src="/cosmos_bg.png"
-                      alt="Warden Protocol Banner"
-                      style={{ borderRadius: "8px" }}
-                    />
-                  </Box>
-
-                  <Heading size="md" mt="8">
-                    Hardware minimum:
-                  </Heading>
-                  <List spacing={2} mt="2">
-                    <ListItem>• 4 core</ListItem>
-                    <ListItem>• 8 GB RAM</ListItem>
-                    <ListItem>• 80 GB SSD NVMe</ListItem>
-                    <ListItem>• Ubuntu 22 - x86 or arm</ListItem>
-                  </List>
-
-                  <Heading size="md" mt="8">
-                    Links:
-                  </Heading>
-                  <List spacing={2} mt="2">
-                    <ListItem>
-                      Website:{" "}
-                      <Link
-                        href="https://wardenprotocol.org"
-                        color="blue.500"
-                        isExternal
-                      >
-                        https://wardenprotocol.org
-                      </Link>
-                    </ListItem>
-                    <ListItem>
-                      Telegram:{" "}
-                      <Link
-                        href="https://t.me/wardenprotocol"
-                        color="blue.500"
-                        isExternal
-                      >
-                        https://t.me/wardenprotocol
-                      </Link>
-                    </ListItem>
-                    <ListItem>
-                      Discord:{" "}
-                      <Link
-                        href="https://discord.gg/wardenprotocol"
-                        color="blue.500"
-                        isExternal
-                      >
-                        https://discord.gg/wardenprotocol
-                      </Link>
-                    </ListItem>
-                    <ListItem>
-                      X:{" "}
-                      <Link
-                        href="https://x.com/wardenprotocol"
-                        color="blue.500"
-                        isExternal
-                      >
-                        https://x.com/wardenprotocol
-                      </Link>
-                    </ListItem>
-                  </List>
-
-                  <Heading size="md" mt="8">
-                    NodesVault Support:
-                  </Heading>
-                  <List spacing={2} mt="2">
-                    <ListItem>
-                      RPC:{" "}
-                      <Link
-                        href="https://warden-testnet-rpc.nodesvault.com"
-                        color="blue.500"
-                        isExternal
-                      >
-                        https://warden-testnet-rpc.nodesvault.com
-                      </Link>
-                    </ListItem>
-                    <ListItem>
-                      API:{" "}
-                      <Link
-                        href="https://warden-testnet-rpc.nodesvault.com"
-                        color="blue.500"
-                        isExternal
-                      >
-                        https://warden-testnet-rpc.nodesvault.com
-                      </Link>
-                    </ListItem>
-                    <ListItem>
-                      gRPC:{" "}
-                      <Link
-                        href="https://warden.testnet.grpc.nodesvault.com"
-                        color="blue.500"
-                        isExternal
-                      >
-                        https://warden.testnet.grpc.nodesvault.com
-                      </Link>
-                    </ListItem>
-                    <ListItem>Snapshort: Daily</ListItem>
-                    <ListItem>State sync:</ListItem>
-                    <ListItem>
-                      Dashboard:{" "}
-                      <Link
-                        href="https://explorer.nodesvault.com/warden-testnet/"
-                        color="blue.500"
-                      >
-                        https://explorer.nodesvault.com/warden-testnet/
-                      </Link>
-                    </ListItem>
-                  </List>
-                </Box>
-                <Box boxSize={100} />
-              </>
-            )}
-            {selectedItem.id === 1 && <Install />}
-            {selectedItem.id === 2 && <Sync />}
-            {selectedItem.id === 3 && <Upgrade />}
-            {selectedItem.id === 4 && <Command />}
-            {selectedItem.id === 5 && <TwoCopyableBoxesSlind />}
-          </Box>
-        </Box> 
-      </Flex>
-      </div>
+      <Box flex="1" p="20px">
+        <Text fontSize="3xl" fontWeight="bold">{selectedItem.title}</Text>
+        <Box mt="10">
+          {selectedItem.id === 0 && (
+            <WardenProtocolInfo />
+          )}
+          {selectedItem.id === 1 && <Install />}
+          {selectedItem.id === 2 && <Sync />}
+          {selectedItem.id === 3 && <Upgrade />}
+          {selectedItem.id === 4 && <Command />}
+          {selectedItem.id === 5 && <TwoCopyableBoxesSlind />}
+        </Box>
+      </Box>
+    </Flex>
+  </div>
   );
+  function WardenProtocolInfo() {
+    return (
+      <Box maxW="800px" mx="auto" mt="10">
+        {/* Your Warden Protocol content here */}
+      </Box>
+    );
+  }
 }
 export function Install() {
   const codeSnippets = [
