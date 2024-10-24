@@ -59,7 +59,7 @@ export default function Home() {
     <>
       <Header />
       <Flex width="100%">
-        <Box width="250px" padding="20px" borderRight="1px solid teal">
+        {/* <Box width="250px" padding="20px" borderRight="1px solid teal">
           <VStack align="start" spacing={6}>
             {menuItems.map((item) => (
               <Link
@@ -84,7 +84,7 @@ export default function Home() {
               </Link>
             ))}
           </VStack>
-        </Box>
+        </Box> */}
 
         {/* Right Side Content */}
         <Box flex="1" p="20px">
