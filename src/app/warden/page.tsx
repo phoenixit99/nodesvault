@@ -64,7 +64,7 @@ const handleCardSelect = (id: number) => {
               </Tab>
             ))}
           </TabList>
-          <TabPanels>
+          {/* <TabPanels>
             {menuItems.map((item, index) => (
               <TabPanel key={item.id}>
                 {selectedItemIndex === index && (
@@ -72,7 +72,7 @@ const handleCardSelect = (id: number) => {
                 )}
               </TabPanel>
             ))}
-          </TabPanels>
+          </TabPanels> */}
         </Tabs>
       </Flex> 
     </>
