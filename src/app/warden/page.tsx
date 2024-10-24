@@ -58,12 +58,12 @@ const CodeBox = ({ code, onCopy, hasCopied }) => (
     {hasCopied && <Text color="green.500">Copied to clipboard!</Text>}
   </Box>
 );
-export default function Home() {
+export default function Wardenpage() {
     const [selectedItemIndex, setSelectedItemIndex] = useState(0);
     // copy the value to state here
   return (
     <>
-      {/* <Header /> */}
+      <Header />
       {/* <Flex width="100%"> */}
       {/* <Tabs variant="enclosed" onChange={(index) => setSelectedItemIndex(index)}> */}
         {/* <TabList>
@@ -102,7 +102,7 @@ function ContentPanel({ selectedItem }) {
       </Box>
     );
   }
-export function Install() {
+function Install() {
   const codeSnippets = [
     {
       title: "Install dependencies:",
@@ -292,7 +292,7 @@ export function Install() {
   );
 }
 
-export function Sync() {
+function Sync() {
   const codeSnippets = [
     {
       title: "Download Genesis & addressbook:",
@@ -358,7 +358,7 @@ export function Sync() {
   );
 }
 
-export function Upgrade() {
+function Upgrade() {
   const codeSnippets = [
     {
       title: "Upgrade for amd64:",
@@ -407,7 +407,7 @@ export function Upgrade() {
   );
 }
 
-export function Command() {
+function Command() {
   const codeSnippets = [
     {
       title: "Wallet Commands:",
@@ -527,7 +527,7 @@ export function Command() {
     </Flex>
   );
 }
-export function TwoCopyableBoxesSlind() {
+function TwoCopyableBoxesSlind() {
   const codeSnippets = [
     {
       title: "Download Binary Slinky:",
