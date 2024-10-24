@@ -17,7 +17,7 @@ import {
   Code,
   IconButton,
 } from "@chakra-ui/react";
-import { CheckCircleIcon } from "@chakra-ui/icons";
+import { CheckCircleIcon, CopyIcon } from "@chakra-ui/icons";
 import Header from "../components/Header";
 import { useState } from "react";
 
