@@ -59,7 +59,7 @@ export default function Home() {
     <>
       <Header />
       <Flex width="100%">
-        {/* <Box width="250px" padding="20px" borderRight="1px solid teal">
+         <Box width="250px" padding="20px" borderRight="1px solid teal">
           <VStack align="start" spacing={6}>
             {menuItems.map((item) => (
               <Link
@@ -84,10 +84,10 @@ export default function Home() {
               </Link>
             ))}
           </VStack>
-        </Box> */}
+        </Box> 
 
-        {/* Right Side Content */}
-        <Box flex="1" p="20px">
+     
+        {/* <Box flex="1" p="20px">
           <Text fontSize="3xl" fontWeight="bold">
             {selectedItem.title}
           </Text>
@@ -100,13 +100,11 @@ export default function Home() {
                     <Heading size="lg">Warden Protocol</Heading>
                   </Stack>
 
-                  {/* Subtitle */}
                   <Text mt="2" fontSize="lg">
                     Next-gen Modular L1 Blockchain Infrastructure for Omnichain
                     Applications.
                   </Text>
 
-                  {/* Banner Image */}
                   <Box mt="4">
                     <img
                       src="/cosmos_bg.png"
@@ -115,7 +113,6 @@ export default function Home() {
                     />
                   </Box>
 
-                  {/* Hardware Minimum */}
                   <Heading size="md" mt="8">
                     Hardware minimum:
                   </Heading>
@@ -126,7 +123,6 @@ export default function Home() {
                     <ListItem>• Ubuntu 22 - x86 or arm</ListItem>
                   </List>
 
-                  {/* Links */}
                   <Heading size="md" mt="8">
                     Links:
                   </Heading>
@@ -229,7 +225,7 @@ export default function Home() {
             {selectedItem.id === 3 && <Command />}
             {selectedItem.id === 4 && <TwoCopyableBoxesSlind />}
           </Box>
-        </Box>
+        </Box> */}
       </Flex>
     </>
   );
