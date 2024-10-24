@@ -2,13 +2,10 @@ import {
   Box,
   Flex,
   Text,
-  VStack,
-  Image,
-  useColorMode,
   Icon,
 } from "@chakra-ui/react";
-import { useState } from "react";
-import { FaGlobe, FaNetworkWired, FaSearch, FaServicestack, FaSitemap } from "react-icons/fa";
+import { ElementType, useState } from "react";
+import { FaNetworkWired, FaSearch, FaServicestack, FaSitemap } from "react-icons/fa";
 
 // Define the types for the props
 interface CardProps {
@@ -78,7 +75,7 @@ const Card = ({ title, icon }: CardProps) => {
       maxW="sm"
       textAlign="center"
     >
-      <Icon as={icon} boxSize={12} color="teal.500" />
+      <Icon as={icon as ElementType}  boxSize={12} color="teal.500" />
       <Text mt="4" fontSize="xl" fontWeight="bold">
         {title}
       </Text>

@@ -24,7 +24,17 @@ import { CheckCircleIcon, CopyIcon } from "@chakra-ui/icons";
 import Header from "../components/Header";
 import { useEffect, useState } from "react";
 
-const menuItems = [
+interface MenuItem {
+  id: number; // Unique identifier
+  title: string; // Title of the menu item
+  icon: string; // Icon representation (could also be a React element if needed)
+}
+interface CodeBoxProps {
+    code: string;
+    onCopy: () => void;
+    hasCopied: boolean;
+  }
+const menuItems: MenuItem[] = [
   { id: 0, title: "Daskboard", icon: "💻" },
   { id: 1, title: "Installation", icon: "⚙️" },
   { id: 2, title: "Sync", icon: "🚀" },
@@ -32,7 +42,11 @@ const menuItems = [
   { id: 4, title: "Command", icon: "💻" },
   { id: 5, title: "Slinky", icon: "🔧" },
 ];
-const CodeBox = ({ code, onCopy, hasCopied }) => (
+  interface ContentPanelProps {
+    selectedItem: MenuItem;
+  }
+
+const CodeBox : React.FC<CodeBoxProps> = ({ code, onCopy, hasCopied }) => (
   <Box
     position="relative"
     width="100%"
@@ -59,49 +73,56 @@ const CodeBox = ({ code, onCopy, hasCopied }) => (
   </Box>
 );
 export default function Wardenpage() {
-    const [selectedItemIndex, setSelectedItemIndex] = useState(0);
-    // copy the value to state here
+  const [selectedItemIndex, setSelectedItemIndex] = useState(0);
+  // copy the value to state here
   return (
     <>
       <Header />
-      {/* <Flex width="100%"> */}
-      {/* <Tabs variant="enclosed" onChange={(index) => setSelectedItemIndex(index)}> */}
-        {/* <TabList>
-          {menuItems.map((item, index) => (
-            <Tab key={item.id}>
-              <Text>{item.icon} {item.title}</Text>
-            </Tab>
-          ))}
-        </TabList>
+      <Flex width="100%">
+        <Tabs
+          variant="enclosed"
+          onChange={(index) => setSelectedItemIndex(index)}
+        >
+          <TabList>
+            {menuItems.map((item, ) => (
+              <Tab key={item.id}>
+                <Text>
+                  {item.icon} {item.title}
+                </Text>
+              </Tab>
+            ))}
+          </TabList>
 
-        <TabPanels>
-          {menuItems.map((item, index) => (
-            <TabPanel key={item.id}>
-              {selectedItemIndex === index && (
-                <ContentPanel selectedItem={item} />
-              )}
-            </TabPanel>
-          ))}
-        </TabPanels> */}
-      {/* </Tabs> */}
-      {/* </Flex> */}
-      </>
+          <TabPanels>
+            {menuItems.map((item, index) => (
+              <TabPanel key={item.id}>
+                {selectedItemIndex === index && (
+                  <ContentPanel selectedItem={item} />
+                )}
+              </TabPanel>
+            ))}
+          </TabPanels>
+        </Tabs>
+      </Flex>
+    </>
   );
 }
-function ContentPanel({ selectedItem }) {
+const ContentPanel: React.FC<ContentPanelProps> = ({ selectedItem }) => {
     return (
-      <Box p="20px">
-        <Text fontSize="3xl" fontWeight="bold">{selectedItem.title}</Text>
-        {/* Render specific content based on selectedItem.id */}
-        {selectedItem.id === 0 && <Install />}
-        {selectedItem.id === 1 && <Install />}
-        {selectedItem.id === 2 && <Sync />}
-        {selectedItem.id === 3 && <Upgrade />}
-        {selectedItem.id === 4 && <Command />}
-        {selectedItem.id === 5 && <TwoCopyableBoxesSlind />}
-      </Box>
-    );
-  }
+    <Box p="20px">
+      <Text fontSize="3xl" fontWeight="bold">
+        {selectedItem.title}
+      </Text>
+      {/* Render specific content based on selectedItem.id */}
+      {selectedItem.id === 0 && <Install />}
+      {selectedItem.id === 1 && <Install />}
+      {selectedItem.id === 2 && <Sync />}
+      {selectedItem.id === 3 && <Upgrade />}
+      {selectedItem.id === 4 && <Command />}
+      {selectedItem.id === 5 && <TwoCopyableBoxesSlind />}
+    </Box>
+  );
+}
 function Install() {
   const codeSnippets = [
     {
