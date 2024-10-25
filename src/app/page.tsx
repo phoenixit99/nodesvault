@@ -156,7 +156,7 @@ export default function Page() {
             </Stack>
           </Box>
         </Box>
-        {/* <HorizontalCardList /> */}
+        <HorizontalCardList />
 
         <Box p={8} width={"100%"}>
           <Text fontSize="4xl" fontWeight="bold" mb={4} textAlign="left">
