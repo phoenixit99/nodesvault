@@ -30,8 +30,6 @@ const menuItems: MenuItem[] = [
   { id: 5, title: "Slinky", icon: "🔧" },
 ];
 export default function Wardenpage() {
-  const [selectedItem, setSelectedItem] = useState(menuItems[0]);
-
   return (
     <>
       <Header />
@@ -59,11 +57,12 @@ export default function Wardenpage() {
           </VStack>
         </Box>
         <Box flex="1" p="20px">
-        {selectedItem.id === 0 && <Text>Sync Instructions...</Text>}
+        {/* {selectedItem.id === 0 && <Text>Sync Instructions...</Text>}
         {selectedItem.id === 1 && <Text>Sync Instructions...</Text>}
         {selectedItem.id === 2 && <Text>Sync Instructions...</Text>}
-        {selectedItem.id === 3 && <Text>Sync Instructions...</Text>}
-          {/* <WardenContent /> */}
+        {selectedItem.id === 3 && <Text>Sync Instructions...</Text>} */}
+          {/* < */}
+          <WardenContent />
         </Box>
       </Flex>
     </>
