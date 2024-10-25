@@ -14,22 +14,21 @@ import {
 } from "@chakra-ui/react";
 import { CheckCircleIcon } from "@chakra-ui/icons";
 import Header from "../components/Header";
-import { useRouter } from 'next/navigation';
 interface MenuItem {
   id: number; // Unique identifier
   title: string; // Title of the menu item
   icon: string; // Icon representation (could also be a React element if needed)
+  href: string;
 }
 const menuItems: MenuItem[] = [
-  { id: 0, title: "Daskboard", icon: "💻" },
-  { id: 1, title: "Installation", icon: "⚙️" },
-  { id: 2, title: "Sync", icon: "🚀" },
-  { id: 3, title: "Upgrade", icon: "⬆️" },
-  { id: 4, title: "Command", icon: "💻" },
-  { id: 5, title: "Slinky", icon: "🔧" },
+  { id: 0, title: "Daskboard", icon: "💻", href: "/warden"  },
+  { id: 1, title: "Installation", icon: "⚙️" , href: "/warden/install" },
+  { id: 2, title: "Sync", icon: "🚀" , href: "/warden/sync" },
+  { id: 3, title: "Upgrade", icon: "⬆️", href: "/warden/upgrade"  },
+  { id: 4, title: "Command", icon: "💻", href: "/warden/command"  },
+  { id: 5, title: "Slinky", icon: "🔧" , href: "/warden/slinky" },
 ];
 export default function Wardenpage() {
-  const router = useRouter();
   return (
     <>
       <Header />
@@ -38,26 +37,9 @@ export default function Wardenpage() {
           <VStack align="start" spacing={6}>
             {menuItems.map((item) => (
               <Link key={item.id}
-              onClick={() => {
-
-                if (item.id == 0) {
-                  router.push('/warden')
-                }
-                else if (item.id == 1) {
-                  router.push('/warden/install')
-                }
-                else if (item.id == 2) {
-                  router.push('/warden/sync')
-                }
-                else if (item.id == 3) {
-                  router.push('/warden/upgrade')
-                } else if ( item.id == 4) {
-                  router.push('/warden/command')
-                } else {
-                  router.push('/warden/slinky')
-                }
-               }}
-              style={{ textDecoration: "none" }}>
+              style={{ textDecoration: "none" }}
+             href={item.href}
+              >
                 <Flex
                   align="center"
                   cursor="pointer"
