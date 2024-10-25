@@ -70,7 +70,7 @@ const networks: Network[] = [
 ];
 export default function Page() {
   return (
-    <>
+    <VStack>
       {/* <Header /> */}
 {/* 
       <VStack
@@ -181,8 +181,8 @@ export default function Page() {
           </Tabs>
         </Box>
       </VStack> */}
-      <TopView />
+      {/* <TopView /> */}
       {/* <Footer /> */}
-    </>
+    </VStack>
   );
 }
