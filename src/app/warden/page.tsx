@@ -58,7 +58,7 @@ export default function Wardenpage() {
           </VStack>
         </Box>
         <Box flex="1" p="20px">
-              <WardenContent />
+              {/* <WardenContent /> */}
             </Box>
      </Flex>
     </>
@@ -85,16 +85,7 @@ const WardenContent = () => {
           Applications.
         </Text>
         <Box mt="4">
-          {/* <Image
-            src="/cosmos_bg.png"
-            alt="Warden Protocol Banner"
-            style={{ borderRadius: "8px" }}
-          />
-                    <Image
-            src="./cosmos_bg-us.jpg" // Add your image here in the public folder
-            alt="Sleeknote office"
-            borderRadius="md"
-          /> */}
+ 
         </Box>
 
         {/* Hardware Minimum */}
