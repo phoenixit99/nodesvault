@@ -14,6 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { CheckCircleIcon } from "@chakra-ui/icons";
 import Header from "../components/Header";
+import { useState } from "react";
 
 interface MenuItem {
   id: number; // Unique identifier
@@ -29,18 +30,18 @@ const menuItems: MenuItem[] = [
   { id: 5, title: "Slinky", icon: "🔧" },
 ];
 export default function Wardenpage() {
-  // copy the value to state here
+  const [selectedItem, setSelectedItem] = useState(menuItems[0]);
+
   return (
     <>
       <Header />
-            <Flex width="100%">
-        <Box width="250px" padding="20px" borderRight="1px solid teal">
+      <Flex width="100%">
+        <Box width="250px" padding="20px">
           <VStack align="start" spacing={6}>
             {menuItems.map((item) => (
-              <Link
-                key={item.id}
-                style={{ textDecoration: "none" }}
-              >
+              <Link key={item.id}
+              onClick={() => setSelectedItem(item)}
+              style={{ textDecoration: "none" }}>
                 <Flex
                   align="center"
                   cursor="pointer"
@@ -58,21 +59,21 @@ export default function Wardenpage() {
           </VStack>
         </Box>
         <Box flex="1" p="20px">
-              {/* <WardenContent /> */}
-            </Box>
-     </Flex>
+        {selectedItem.id === 0 && <Text>Sync Instructions...</Text>}
+        {selectedItem.id === 1 && <Text>Sync Instructions...</Text>}
+        {selectedItem.id === 2 && <Text>Sync Instructions...</Text>}
+        {selectedItem.id === 3 && <Text>Sync Instructions...</Text>}
+          {/* <WardenContent /> */}
+        </Box>
+      </Flex>
     </>
   );
 }
 
 const WardenContent = () => {
   return (
-    <VStack
-    alignItems={"center"}
-    maxW="100%"
-    width={"100%"}
-  >
-    <Box maxW="1200px" mx="auto" mt="10">
+    <VStack alignItems={"center"} maxW="100%" width={"100%"}>
+      <Box maxW="1200px" mx="auto" mt="10">
         {/* Status Indicator and Title */}
         <Stack direction="row" align="center">
           <Icon as={CheckCircleIcon} boxSize={6} color="green.400" />
@@ -84,9 +85,7 @@ const WardenContent = () => {
           Next-gen Modular L1 Blockchain Infrastructure for Omnichain
           Applications.
         </Text>
-        <Box mt="4">
- 
-        </Box>
+        <Box mt="4"></Box>
 
         {/* Hardware Minimum */}
         <Heading size="md" mt="8">
