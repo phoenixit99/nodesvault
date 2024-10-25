@@ -30,6 +30,8 @@ const menuItems: MenuItem[] = [
   { id: 5, title: "Slinky", icon: "🔧" },
 ];
 export default function Wardenpage() {
+  const [selectedItem, setSelectedItem] = useState(menuItems[0]);
+
   return (
     <>
       <Header />
