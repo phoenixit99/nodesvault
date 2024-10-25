@@ -89,7 +89,7 @@ const menuItems: MenuItem[] = [
           </VStack>
         </Box>
         <Box flex="1" p="20px">
-          <Sync />
+          {/* <Sync /> */}
         </Box>
       </Flex>
     </>

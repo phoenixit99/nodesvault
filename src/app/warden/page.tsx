@@ -11,6 +11,7 @@ import {
   Stack,
   Flex,
   VStack,
+  Image
 } from "@chakra-ui/react";
 import { CheckCircleIcon } from "@chakra-ui/icons";
 import Header from "../components/Header";
@@ -57,7 +58,7 @@ export default function Wardenpage() {
           </VStack>
         </Box>
         <Box flex="1" p="20px">
-          <WardenContent />
+          {/* <WardenContent /> */}
         </Box>
       </Flex>
     </>
@@ -80,7 +81,7 @@ const WardenContent = () => {
           Applications.
         </Text>
         <Box mt="4">
-          <img
+          <Image
             src="/cosmos_bg.png"
             alt="Warden Protocol Banner"
             style={{ borderRadius: "8px" }}
