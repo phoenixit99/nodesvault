@@ -14,8 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { CheckCircleIcon } from "@chakra-ui/icons";
 import Header from "../components/Header";
-import { useState } from "react";
-
+import { useRouter } from 'next/navigation';
 interface MenuItem {
   id: number; // Unique identifier
   title: string; // Title of the menu item
@@ -30,6 +29,7 @@ const menuItems: MenuItem[] = [
   { id: 5, title: "Slinky", icon: "🔧" },
 ];
 export default function Wardenpage() {
+  const router = useRouter();
   return (
     <>
       <Header />
@@ -38,7 +38,25 @@ export default function Wardenpage() {
           <VStack align="start" spacing={6}>
             {menuItems.map((item) => (
               <Link key={item.id}
-              onClick={() => { }}
+              onClick={() => {
+
+                if (item.id == 0) {
+                  router.push('/warden')
+                }
+                else if (item.id == 1) {
+                  router.push('/warden/install')
+                }
+                else if (item.id == 2) {
+                  router.push('/warden/sync')
+                }
+                else if (item.id == 3) {
+                  router.push('/warden/upgrade')
+                } else if ( item.id == 4) {
+                  router.push('/warden/command')
+                } else {
+                  router.push('/warden/slinky')
+                }
+               }}
               style={{ textDecoration: "none" }}>
                 <Flex
                   align="center"
@@ -57,11 +75,6 @@ export default function Wardenpage() {
           </VStack>
         </Box>
         <Box flex="1" p="20px">
-        {/* {selectedItem.id === 0 && <Text>Sync Instructions...</Text>}
-        {selectedItem.id === 1 && <Text>Sync Instructions...</Text>}
-        {selectedItem.id === 2 && <Text>Sync Instructions...</Text>}
-        {selectedItem.id === 3 && <Text>Sync Instructions...</Text>} */}
-          {/* < */}
           <WardenContent />
         </Box>
       </Flex>
@@ -84,7 +97,13 @@ const WardenContent = () => {
           Next-gen Modular L1 Blockchain Infrastructure for Omnichain
           Applications.
         </Text>
-        <Box mt="4"></Box>
+        <Box mt="4">
+          <img
+            src="/cosmos_bg.png"
+            alt="Warden Protocol Banner"
+            style={{ borderRadius: "8px" }}
+          />
+        </Box>
 
         {/* Hardware Minimum */}
         <Heading size="md" mt="8">
