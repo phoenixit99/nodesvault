@@ -30,8 +30,6 @@ const menuItems: MenuItem[] = [
   { id: 5, title: "Slinky", icon: "🔧" },
 ];
 export default function Wardenpage() {
-  const [selectedItem, setSelectedItem] = useState(menuItems[0]);
-
   return (
     <>
       <Header />
@@ -40,7 +38,7 @@ export default function Wardenpage() {
           <VStack align="start" spacing={6}>
             {menuItems.map((item) => (
               <Link key={item.id}
-              onClick={() => setSelectedItem(item)}
+              onClick={() => { }}
               style={{ textDecoration: "none" }}>
                 <Flex
                   align="center"
