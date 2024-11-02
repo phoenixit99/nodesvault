@@ -41,10 +41,6 @@ const cardData = [
 const HorizontalCardList = () => {
   const [selectedCard, setSelectedCard] = useState<number | null>(null);
 
-  const handleCardSelect = (id: number) => {
-    setSelectedCard(id);
-  };
-
   return (
     <>
       <Text fontSize="4xl" fontWeight="bold" mb={4} textAlign="left">
@@ -57,7 +53,7 @@ const HorizontalCardList = () => {
             title={card.title}
             icon={card.icon}
             isSelected={card.id === selectedCard}
-            onSelect={() => handleCardSelect(card.id)}
+            onSelect={() => setSelectedCard(card.id)}
           />
         ))}
       </Flex>
@@ -68,36 +64,32 @@ const HorizontalCardList = () => {
 const Card = ({ title, icon, isSelected, onSelect }: CardProps) => {
   const { colorMode } = useColorMode();
   const isDark = colorMode === "dark";
-  const bgColorDark = isDark ? "white.700" : "white.100";
-  const bgColor = isSelected ? "teal.500" : bgColorDark;
-  const textColorDark = isDark ? "white" : "black";
-  const textColor = isSelected ? "white" : textColorDark;
+
+  const bgColor = isSelected ? "teal.500" : isDark ? "gray.700" : "gray.100";
+  const textColor = isSelected ? "white" : isDark ? "white" : "black";
   const iconColor = isSelected ? "white" : "teal.500";
 
   return (
-    <>
-      <Box
-        onClick={onSelect}
-        bg={bgColor}
-        color={textColor}
-        borderRadius="md"
-        p={4}
-        width="200px"
-        height="150px"
-        cursor="pointer"
-        boxShadow="lg"
-        _hover={{ boxShadow: "xl" }}
-        transition="background-color 0.3s"
-      >
-        <VStack align="center">
-          <Icon as={icon as ElementType} boxSize={12} color={iconColor} />
-
-          <Text fontSize="lg" textAlign={"center"} fontWeight="bold">
-            {title}
-          </Text>
-        </VStack>
-      </Box>
-    </>
+    <Box
+      onClick={onSelect}
+      bg={bgColor}
+      color={textColor}
+      borderRadius="md"
+      p={4}
+      width="200px"
+      height="150px"
+      cursor="pointer"
+      boxShadow="lg"
+      _hover={{ boxShadow: "xl" }}
+      transition="background-color 0.3s"
+    >
+      <VStack align="center">
+        <Icon as={icon as ElementType} boxSize={12} color={iconColor} />
+        <Text fontSize="lg" fontWeight="bold" textAlign="center">
+          {title}
+        </Text>
+      </VStack>
+    </Box>
   );
 };
 
