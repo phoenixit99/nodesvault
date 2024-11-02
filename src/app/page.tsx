@@ -70,7 +70,7 @@ const networks: Network[] = [
 ];
 export default function Page() {
   return (
-    <VStack>
+    <>
       <Header />
       <VStack
         paddingTop={100}
@@ -182,6 +182,6 @@ export default function Page() {
       </VStack>
       <TopView />
       <Footer />
-    </VStack>
+    </>
   );
 }
