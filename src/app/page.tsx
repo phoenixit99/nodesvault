@@ -71,8 +71,7 @@ const networks: Network[] = [
 export default function Page() {
   return (
     <VStack>
-      {/* <Header /> */}
-{/* 
+      <Header />
       <VStack
         paddingTop={100}
         alignItems={"center"}
@@ -156,7 +155,7 @@ export default function Page() {
             </Stack>
           </Box>
         </Box>
-    <HorizontalCardList />
+        <HorizontalCardList />
 
         <Box p={8} width={"100%"}>
           <Text fontSize="4xl" fontWeight="bold" mb={4} textAlign="left">
@@ -180,9 +179,9 @@ export default function Page() {
             </TabPanels>
           </Tabs>
         </Box>
-      </VStack> */}
-      {/* <TopView /> */}
-      {/* <Footer /> */}
+      </VStack>
+      <TopView />
+      <Footer />
     </VStack>
   );
 }
