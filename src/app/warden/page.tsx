@@ -367,6 +367,196 @@ export default function Menu() {
     );
   };
 
+  const Install = () => {
+    const codeSnippets = [
+      {
+        title: "Install dependencies:",
+        code: `
+      sudo apt update && sudo apt upgrade -y
+      sudo apt install curl git wget htop tmux build-essential jq make lz4 gcc unzip -y
+            `,
+      },
+      {
+        title: "Install GO: (amd64 - x86)",
+        code: `
+      rm -rf $HOME/go
+      sudo rm -rf /usr/local/go
+      cd $HOME
+      curl https://dl.google.com/go/go1.23.1.linux-amd64.tar.gz | sudo tar -C/usr/local -zxvf -
+      cat <<'EOF' >>$HOME/.profile
+      export GOROOT=/usr/local/go
+      export GOPATH=$HOME/go
+      export GO111MODULE=on
+      export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
+      EOF
+      source $HOME/.profile
+      go version
+  
+            `,
+      },
+      {
+        title: "Install GO: (arm64)",
+        code: `
+      rm -rf $HOME/go
+      sudo rm -rf /usr/local/go
+      cd $HOME
+      curl https://dl.google.com/go/go1.23.1.linux-arm64.tar.gz | sudo tar -C/usr/local -zxvf -
+      cat <<'EOF' >>$HOME/.profile
+      export GOROOT=/usr/local/go
+      export GOPATH=$HOME/go
+      export GO111MODULE=on
+      export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
+      EOF
+      source $HOME/.profile
+      go version
+  
+            `,
+      },
+      {
+        title: "Download Binary Warden Protocol:",
+        code: `
+      // amd64
+      cd $HOME
+      wget https://github.com/warden-protocol/wardenprotocol/releases/download/v0.5.2/wardend_Linux_x86_64.zip
+      unzip wardend_Linux_x86_64.zip
+      rm wardend_Linux_x86_64.zip
+      chmod +x ~/wardend
+      sudo mv ~/wardend /usr/local/bin
+      sudo systemctl restart wardend && sudo journalctl -u wardend -f -o cat
+  
+      //arm64
+      cd $HOME
+      wget https://github.com/warden-protocol/wardenprotocol/releases/download/v0.5.2/wardend_Linux_arm64.zip
+      unzip wardend_Linux_arm64.zip
+      rm wardend_Linux_arm64.zip
+      chmod +x ~/wardend
+      sudo mv ~/wardend /usr/local/bin
+      sudo systemctl restart wardend && sudo journalctl -u wardend -f -o cat
+  
+            `,
+      },
+
+      {
+        title: "Set chain: (Change <Change-Name> )",
+        code: `
+      wardend init <Change-Name> --chain-id chiado_10010-1
+            `,
+      },
+
+      {
+        title: "Set min gas: ",
+        code: `
+      sed -i 's/minimum-gas-prices = ""/minimum-gas-prices = "250000000000000award"/' $HOME/.warden/config/app.toml
+            `,
+      },
+
+      {
+        title: "Set indexing: (Option) ",
+        code: `
+      sed -i -e "s/^indexer *=.*/indexer = \"null\"/" $HOME/.warden/config/config.toml
+            `,
+      },
+
+      {
+        title: "Download Genesis & addressbook:",
+        code: `
+      wget -O $HOME/.warden/config/genesis.json https://file.node39.top/testnet/warden/genesis.json
+      wget -O $HOME/.warden/config/addrbook.json https://file.node39.top/testnet/warden/addrbook.json
+            `,
+      },
+
+      {
+        title: "Peers:",
+        code: `
+      PEERS="fd6cf9438cfafe4a1fc35bb20456a856328febaa@37.27.47.29:39656,35c8779026ceb17659b722b6a768e5a7f070c770@84.247.161.158:31656,86fe149f801ac75213179be5b56fbd1a1e545c43@202.61.225.157:20656"
+      sed -i -e "s/^seeds *=.*/seeds = \"$SEEDS\"/; s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.cardchaind/config/config.toml
+  
+            `,
+      },
+
+      {
+        title: "Create Service:",
+        code: `
+      sudo tee /etc/systemd/system/wardend.service > /dev/null <<EOF
+  
+      [Unit]
+      Description=Warden Protocol
+      After=network-online.target
+  
+      [Service]
+      User=root
+      ExecStart=$(which wardend) start
+      Restart=always
+      RestartSec=3
+      LimitNOFILE=65535
+  
+      [Install]
+      WantedBy=multi-user.target
+      EOF
+  
+      sudo systemctl daemon-reload
+      sudo systemctl enable wardend
+  
+            `,
+      },
+
+      {
+        title: "Wallet:",
+        code: `
+      // Add New Wallet
+      wardend keys add wallet
+  
+      // Restore executing wallet
+      wardend keys add wallet --recover
+  
+      // List All Wallets
+      wardend keys list
+  
+      // Delete wallet
+      wardend keys delete wallet
+  
+      // Check Balance
+      wardend q bank balances $(wardend keys show wallet -a)
+  
+      // Show validator
+      wardend tendermint show-validator
+  
+      // Show EVM address
+      wardend keys unsafe-export-eth-key
+  
+      // Backup
+      Seed + priv_validator_key.json
+  
+            `,
+      },
+
+      {
+        title: "Check sync: (False -> Done)",
+        code: `
+      wardend status 2>&1 | jq .SyncInfo.catching_up
+            `,
+      },
+    ];
+
+    return (
+      <Flex direction="column" align="start" maxW="1200px" p={4} gap={6}>
+        <Heading size="lg">Install</Heading>
+
+        {codeSnippets.map(({ title, code }) => {
+          const { hasCopied, onCopy } = useClipboard(code);
+          return (
+            <div key={title}>
+              <Text fontSize="1xl" fontWeight="bold">
+                {title}
+              </Text>
+              <CodeBox code={code} onCopy={onCopy} hasCopied={hasCopied} />
+            </div>
+          );
+        })}
+      </Flex>
+    );
+  };
+
   return (
     <div>
       <Header />
@@ -402,11 +592,7 @@ export default function Menu() {
               Hello
             </p>
           )}
-          {selectedId === 1 && (
-            <p className="mt-4 text-center text-xl font-semibold text-gray-800">
-              Test
-            </p>
-          )}
+          {selectedId === 1 && <Install />}
 
           {selectedId === 2 && <Sync />}
 
