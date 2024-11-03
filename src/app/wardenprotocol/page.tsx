@@ -3,7 +3,6 @@
 import { Box, Flex, Link, VStack,Text, ListItem, List, Heading, Stack, Icon } from "@chakra-ui/react";
 import Header from "../components/Header";
 import { CheckCircleIcon } from "@chakra-ui/icons";
-import { useState } from "react";
 
 interface MenuItem {
     id: number; // Unique identifier
@@ -178,9 +177,7 @@ export default function AboutUsPage() {
         </Box>
         <Box flex="1" p="20px">
         </Box>
-        {selectedId === 0 && (
          <WardenContent></WardenContent>
-      )}
       </Flex>
     </div>
   );
