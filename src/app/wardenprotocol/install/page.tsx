@@ -52,12 +52,12 @@ interface MenuItem {
     href: string;
   }
 const menuItems: MenuItem[] = [
-    { id: 0, title: "Daskboard", icon: "💻", href: "/warden"  },
-    { id: 1, title: "Installation", icon: "⚙️" , href: "/warden/install" },
-    { id: 2, title: "Sync", icon: "🚀" , href: "/warden/sync" },
-    { id: 3, title: "Upgrade", icon: "⬆️", href: "/warden/upgrade"  },
-    { id: 4, title: "Command", icon: "💻", href: "/warden/command"  },
-    { id: 5, title: "Slinky", icon: "🔧" , href: "/warden/slinky" },
+  { id: 0, title: "Daskboard", icon: "💻", href: "/wardenprotocol"  },
+  { id: 1, title: "Installation", icon: "⚙️" , href: "/wardenprotocol/install" },
+  { id: 2, title: "Sync", icon: "🚀" , href: "/wardenprotocol/sync" },
+  { id: 3, title: "Upgrade", icon: "⬆️", href: "/wardenprotocol/upgrade"  },
+  { id: 4, title: "Command", icon: "💻", href: "/wardenprotocol/command"  },
+  { id: 5, title: "Slinky", icon: "🔧" , href: "/wardenprotocol/slinky" },
   ];
   export default function Wardenpage() {
     return (

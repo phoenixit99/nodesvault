@@ -63,7 +63,7 @@ const CodeBox: React.FC<CodeBoxProps> = ({ code, onCopy, hasCopied }) => (
 );
   export default function Wardenpage() {
     return (
-      <>
+      <div>
         <Header />
         <Flex width="100%">
           <Box width="250px" padding="20px">
@@ -93,7 +93,7 @@ const CodeBox: React.FC<CodeBoxProps> = ({ code, onCopy, hasCopied }) => (
           <SlinkyContent />
         </Box>
       </Flex>
-    </>
+    </div>
   );
 }
 
