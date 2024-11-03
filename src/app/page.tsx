@@ -33,11 +33,6 @@ const networks: Network[] = [
     logo: "https://itrocket.net/_next/image/?url=%2Ftestnet%2Fwarden.png&w=96&q=75",
   },
   {
-    name: "Warden",
-    apy: "soon",
-    logo: "https://itrocket.net/_next/image/?url=%2Ftestnet%2Fwarden.png&w=96&q=75",
-  },
-  {
     name: "Crossfi",
     apy: "soon",
     logo: "https://itrocket.net/_next/image/?url=%2Fmainnet%2Fcrossfi.jpg&w=256&q=75",
