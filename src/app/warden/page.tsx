@@ -706,6 +706,7 @@ export default function Menu() {
                 borderRadius="md"
                 _hover={{ bg: "blue.200", color: "white" }}
                 bg={selectedId === item.id ? "blue.500" : "transparent"} // Show selected background color
+                color={selectedId === item.id ? "white" : "black"} // Show selected text color
               >
                 <Flex align="center">
                   <Text fontSize="lg">{item.icon}</Text>
