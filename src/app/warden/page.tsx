@@ -31,7 +31,7 @@ const menuItems: MenuItem[] = [
 ];
 export default function Wardenpage() {
   return (
-    <>
+    <div>
       <Header />
       <Flex width="100%">
         <Box width="250px" padding="20px">
@@ -58,10 +58,10 @@ export default function Wardenpage() {
           </VStack>
         </Box>
         <Box flex="1" p="20px">
-           <WardenContent /> 
+           {/* <WardenContent />  */}
         </Box>
       </Flex>
-    </>
+    </div>
   );
 }
 
