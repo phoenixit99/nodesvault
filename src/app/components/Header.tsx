@@ -12,17 +12,12 @@ import {
   Image,
 } from "@chakra-ui/react";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
-import { useRouter } from 'next/navigation';
+
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 const Header = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { colorMode, toggleColorMode } = useColorMode();
   const isDark = colorMode === "dark";
-  const router = useRouter()
-
-  const handleSelect = (network: string) => {
-
-  };
 
   return (
     <Box
@@ -54,11 +49,9 @@ const Header = () => {
         <HStack spacing={8} alignItems="center">
           <HStack as="nav" spacing={4} display={{ base: "none", md: "flex" }}>
             {["Networks", "Services", "Explorer", "FAQ"].map((item) => (
-              <div key={item} onClick={() => handleSelect(item)}>
-              <Link key={item}  fontWeight="medium">
+              <Link key={item} href={`#${item.toLowerCase()}`} fontWeight="medium">
                 {item}
               </Link>
-              </div>
             ))}
           </HStack>
           <IconButton
@@ -74,11 +67,9 @@ const Header = () => {
         <Box pb={4} display={{ md: "none" }}>
           <Stack as="nav" spacing={4}>
             {["Networks", "Services", "Explorer", "FAQ"].map((item) => (
-            <div key={item} onClick={() => handleSelect(item)}>
-              <Link key={item}>
+              <Link key={item} href={`#${item.toLowerCase()}`}>
                 {item}
               </Link>
-              </div>
             ))}
           </Stack>
         </Box>
