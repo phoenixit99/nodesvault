@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
-import { Box, Flex, VStack, Text, Heading, Code, IconButton } from "@chakra-ui/react";
+import { Box, Flex, VStack, Text, Heading, Code, IconButton,  useClipboard,
+} from "@chakra-ui/react";
 import Header from "../components/Header";
 import { CopyIcon } from "@chakra-ui/icons";
 
