@@ -42,7 +42,7 @@ const HorizontalCardList = () => {
   const [selectedCard, setSelectedCard] = useState<number | null>(null);
 
   return (
-    <>
+    <div>
       <Text fontSize="4xl" fontWeight="bold" mb={4} textAlign="left">
         Key Features
       </Text>
@@ -57,7 +57,7 @@ const HorizontalCardList = () => {
           />
         ))}
       </Flex>
-    </>
+    </div>
   );
 };
 
@@ -65,7 +65,7 @@ const Card = ({ title, icon, isSelected, onSelect }: CardProps) => {
   const { colorMode } = useColorMode();
   const isDark = colorMode === "dark";
 
-  const bgColor = isSelected ? "teal.500" : isDark ? "gray.700" : "gray.100";
+  const bgColor = isSelected ? "teal.500" : isDark ? "gray.700" : "white";
   const textColor = isSelected ? "white" : isDark ? "white" : "black";
   const iconColor = isSelected ? "white" : "teal.500";
 
