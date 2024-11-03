@@ -66,11 +66,13 @@ export default function Menu() {
   };
   // Function to be called after a delay
   const handleInitialSelect = () => {
+    console.log("Setting selectedId to 0"); // Debugging statement
     setSelectedId(0); // For example, set the default selected item to ID 0
   };
 
   // useEffect to call the function after a delay when the component loads
   useEffect(() => {
+    console.log("Component mounted"); // Debugging statement
     const timer = setTimeout(() => {
       handleInitialSelect();
     }, 2000); // Delay of 1 second
