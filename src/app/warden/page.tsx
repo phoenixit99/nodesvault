@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Box,
   Flex,
@@ -64,6 +64,19 @@ export default function Menu() {
   const handleSelect = (id: number) => {
     setSelectedId(id);
   };
+  // Function to be called after a delay
+  const handleInitialSelect = () => {
+    setSelectedId(0); // For example, set the default selected item to ID 0
+  };
+
+  // useEffect to call the function after a delay when the component loads
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      handleInitialSelect();
+    }, 1000); // Delay of 1 second
+
+    return () => clearTimeout(timer); // Cleanup on component unmount
+  }, []);
 
   const SlinkyContent = () => {
     const codeSnippets = [
