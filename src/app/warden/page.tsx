@@ -721,7 +721,7 @@ export default function Menu() {
 
         {/* Content Area */}
         <Box flex="1" p="20px">
-          {(selectedId === 0 || selectedId === null) && (
+          {(selectedId === 0) && (
             <WardenContent />
           )}
           {selectedId === 1 && <Install />}
