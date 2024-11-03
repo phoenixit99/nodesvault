@@ -1,6 +1,7 @@
-'use client'
+"use client";
 import { useState } from "react";
 import { Box, Flex, VStack, Text } from "@chakra-ui/react";
+import Header from "../components/Header";
 
 const menuItems = [
   { id: 0, title: "Dashboard", icon: "💻" },
@@ -20,6 +21,8 @@ export default function Menu() {
 
   return (
     <div>
+      <Header />
+
       <Flex width="100%">
         <Box width="250px" padding="20px">
           <VStack align="start" spacing={6}>
@@ -31,8 +34,7 @@ export default function Menu() {
                 p={2}
                 borderRadius="md"
                 _hover={{ bg: "blue.200", color: "white" }}
-                bg={selectedId === item.id ? "blue.500" : "transparent"} // Show selected background color
-                color={selectedId === item.id ? "white" : "black"} // Show selected text color
+                bg={selectedId === item.id ? "teal.500" : "transparent"} // Show selected background color
               >
                 <Flex align="center">
                   <Text fontSize="lg">{item.icon}</Text>
@@ -44,7 +46,7 @@ export default function Menu() {
             ))}
           </VStack>
         </Box>
-        
+
         {/* Content Area */}
         <Box flex="1" p="20px">
           {selectedId === 0 && (
@@ -57,7 +59,26 @@ export default function Menu() {
               Test
             </p>
           )}
-          {/* Add more conditional content here based on selectedId */}
+                {selectedId === 2 && (
+            <p className="mt-4 text-center text-xl font-semibold text-gray-800">
+              Test
+            </p>
+          )}
+               {selectedId === 3 && (
+            <p className="mt-4 text-center text-xl font-semibold text-gray-800">
+              Test
+            </p>
+          )}
+               {selectedId === 4 && (
+            <p className="mt-4 text-center text-xl font-semibold text-gray-800">
+              Test
+            </p>
+          )}
+               {selectedId === 5 && (
+            <p className="mt-4 text-center text-xl font-semibold text-gray-800">
+              Test
+            </p>
+          )}
         </Box>
       </Flex>
     </div>
