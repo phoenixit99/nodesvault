@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { useState } from "react";
 import { Box, Flex, VStack, Text } from "@chakra-ui/react";
 
@@ -44,7 +44,7 @@ export default function Menu() {
             ))}
           </VStack>
         </Box>
-        
+
         {/* Content Area */}
         <Box flex="1" p="20px">
           {selectedId === 0 && (
@@ -57,7 +57,30 @@ export default function Menu() {
               Test
             </p>
           )}
-          {/* Add more conditional content here based on selectedId */}
+
+          {selectedId === 2 && (
+            <p className="mt-4 text-center text-xl font-semibold text-gray-800">
+              Test
+            </p>
+          )}
+
+          {selectedId === 3 && (
+            <p className="mt-4 text-center text-xl font-semibold text-gray-800">
+              Test
+            </p>
+          )}
+
+          {selectedId === 4 && (
+            <p className="mt-4 text-center text-xl font-semibold text-gray-800">
+              Test
+            </p>
+          )}
+
+          {selectedId === 5 && (
+            <p className="mt-4 text-center text-xl font-semibold text-gray-800">
+              Test
+            </p>
+          )}
         </Box>
       </Flex>
     </div>
