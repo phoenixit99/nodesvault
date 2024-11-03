@@ -1,28 +1,38 @@
 "use client";
 import { useState } from "react";
-import { Box, Flex, Link, VStack,Text, ListItem, List, Heading, Stack, Icon } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Link,
+  VStack,
+  Text,
+  ListItem,
+  List,
+  Heading,
+  Stack,
+  Icon,
+} from "@chakra-ui/react";
 import Header from "../components/Header";
 import { CheckCircleIcon } from "@chakra-ui/icons";
 
 interface MenuItem {
-    id: number; // Unique identifier
-    title: string; // Title of the menu item
-    icon: string; // Icon representation (could also be a React element if needed)
-    href: string;
-  }
-  const menuItems: MenuItem[] = [
-    { id: 0, title: "Daskboard", icon: "💻", href: "/testnet"  },
-    { id: 1, title: "Installation", icon: "⚙️" , href: "/wardenprotocol/install" },
-    { id: 2, title: "Sync", icon: "🚀" , href: "/wardenprotocol/sync" },
-    { id: 3, title: "Upgrade", icon: "⬆️", href: "/wardenprotocol/upgrade"  },
-    { id: 4, title: "Command", icon: "💻", href: "/wardenprotocol/command"  },
-    { id: 5, title: "Slinky", icon: "🔧" , href: "/wardenprotocol/slinky" },
-  ];
+  id: number; // Unique identifier
+  title: string; // Title of the menu item
+  icon: string; // Icon representation (could also be a React element if needed)
+  href: string;
+}
+const menuItems: MenuItem[] = [
+  { id: 0, title: "Daskboard", icon: "💻", href: "/testnet" },
+  { id: 1, title: "Installation", icon: "⚙️", href: "/wardenprotocol/install" },
+  { id: 2, title: "Sync", icon: "🚀", href: "/wardenprotocol/sync" },
+  { id: 3, title: "Upgrade", icon: "⬆️", href: "/wardenprotocol/upgrade" },
+  { id: 4, title: "Command", icon: "💻", href: "/wardenprotocol/command" },
+  { id: 5, title: "Slinky", icon: "🔧", href: "/wardenprotocol/slinky" },
+];
 export default function AboutUsPage() {
-
   const [selectedId, setSelectedId] = useState(0); // Default to the first item
 
-  const handleSelect = (id) => {
+  const handleSelect = (id: number) => {
     setSelectedId(id);
   };
 
@@ -35,7 +45,7 @@ export default function AboutUsPage() {
             <Icon as={CheckCircleIcon} boxSize={6} color="green.400" />
             <Heading size="lg">Warden Protocol</Heading>
           </Stack>
-  
+
           {/* Subtitle */}
           <Text mt="2" fontSize="lg">
             Next-gen Modular L1 Blockchain Infrastructure for Omnichain
@@ -48,7 +58,7 @@ export default function AboutUsPage() {
               style={{ borderRadius: "8px" }}
             />
           </Box> */}
-  
+
           {/* Hardware Minimum */}
           <Heading size="md" mt="8">
             Hardware minimum:
@@ -59,7 +69,7 @@ export default function AboutUsPage() {
             <ListItem>• 80 GB SSD NVMe</ListItem>
             <ListItem>• Ubuntu 22 - x86 or arm</ListItem>
           </List>
-  
+
           {/* Links */}
           <Heading size="md" mt="8">
             Links:
@@ -67,7 +77,11 @@ export default function AboutUsPage() {
           <List spacing={2} mt="2">
             <ListItem>
               Website:{" "}
-              <Link href="https://wardenprotocol.org" color="blue.500" isExternal>
+              <Link
+                href="https://wardenprotocol.org"
+                color="blue.500"
+                isExternal
+              >
                 https://wardenprotocol.org
               </Link>
             </ListItem>
@@ -102,7 +116,7 @@ export default function AboutUsPage() {
               </Link>
             </ListItem>
           </List>
-  
+
           <Heading size="md" mt="8">
             NodesVault Support:
           </Heading>
@@ -162,9 +176,10 @@ export default function AboutUsPage() {
         <Box width="250px" padding="20px">
           <VStack align="start" spacing={6}>
             {menuItems.map((item) => (
-              <Link key={item.id}
-              style={{ textDecoration: "none" }}
-              onClick={() => handleSelect(item.id)}
+              <Link
+                key={item.id}
+                style={{ textDecoration: "none" }}
+                onClick={() => handleSelect(item.id)}
               >
                 <Flex
                   align="center"
@@ -182,14 +197,18 @@ export default function AboutUsPage() {
             ))}
           </VStack>
         </Box>
-        <Box flex="1" p="20px">
-        </Box>
-         {/* <WardenContent></WardenContent> */}
-         {selectedId === 0 && (
-        <p className="mt-4 text-center text-xl font-semibold text-gray-800">
-          Hello
-        </p>
-      )}
+        <Box flex="1" p="20px"></Box>
+        {/* <WardenContent></WardenContent> */}
+        {selectedId === 0 && (
+          <p className="mt-4 text-center text-xl font-semibold text-gray-800">
+            Hello
+          </p>
+        )}
+        {selectedId === 1 && (
+          <p className="mt-4 text-center text-xl font-semibold text-gray-800">
+            Test
+          </p>
+        )}
       </Flex>
     </div>
   );
