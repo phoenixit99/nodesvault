@@ -2,6 +2,7 @@
 "use client";
 import { Button, VStack } from "@chakra-ui/react";
 import Header from "./components/Header";
+
 import {
   Box,
   Grid,
@@ -18,64 +19,66 @@ import Footer from "./components/Footer";
 import TopView from "./components/TopView";
 import { FaGithub, FaTelegramPlane, FaTwitter } from "react-icons/fa";
 import HorizontalCardList from "./components/HorizontalCardList";
+import { useRouter } from 'next/navigation';
+
 // Define the interface for a network object
 interface Network {
   name: string;
   apy: string;
   logo: string;
-  href: string;
 }
 const networks: Network[] = [
   {
     name: "Kopi",
     apy: "soon",
     logo: "https://test.kopi.money/_next/static/media/kopi-logo.669f44c9.svg",
-    href: "/kopi",
   },
   {
     name: "Warden",
     apy: "~10",
     logo: "https://itrocket.net/_next/image/?url=%2Ftestnet%2Fwarden.png&w=96&q=75",
-    href: "/warden",
   },
   {
     name: "Crossfi",
     apy: "soon",
     logo: "https://itrocket.net/_next/image/?url=%2Fmainnet%2Fcrossfi.jpg&w=256&q=75",
-    href: "/warden",
   },
   {
     name: "Doravota",
     apy: "~10%",
     logo: "https://itrocket.net/_next/image/?url=%2Fmainnet%2Fdoravota.jpg&w=256&q=75",
-    href: "/warden",
   },
   {
     name: "Empower",
     apy: "~70%",
     logo: "https://itrocket.net/_next/image/?url=%2Fmainnet%2Fempower.png&w=256&q=75",
-    href: "/warden",
   },
   {
     name: "Forta",
     apy: "soon",
     logo: "https://itrocket.net/_next/image/?url=%2Fmainnet%2Fforta.jpg&w=256&q=75",
-    href: "/warden",
   },
   {
     name: "Humans",
     apy: "~41%",
     logo: "https://itrocket.net/_next/image/?url=%2Fmainnet%2Fhumans.jpg&w=256&q=75",
-    href: "/warden",
   },
   {
     name: "Lava",
     apy: "soon",
     logo: "https://itrocket.net/_next/image/?url=%2Fmainnet%2Flava.jpg&w=256&q=75",
-    href: "/warden",
   },
 ];
 export default function Page() {
+  const router = useRouter()
+
+  const handleSelect = (network: string) => {
+    if (network === 'Kopi') {
+      router.push('/kopi');
+    } else {
+      router.push('/warden');
+    }
+  };
   return (
     <div>
       <Header />
@@ -174,7 +177,9 @@ export default function Page() {
                   gap={6}
                 >
                   {networks.map((network, index) => (
+                  <div key={index} onClick={() => handleSelect(network.name)}>
                     <NetworkCard key={index} network={network} />
+                    </div>
                   ))}
                 </Grid>
               </TabPanel>
