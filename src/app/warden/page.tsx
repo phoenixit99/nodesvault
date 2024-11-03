@@ -4,6 +4,20 @@ import { Box, Flex, Link, VStack,Text, ListItem, List, Heading, Stack, Icon } fr
 import Header from "../components/Header";
 import { CheckCircleIcon } from "@chakra-ui/icons";
 
+interface MenuItem {
+    id: number; // Unique identifier
+    title: string; // Title of the menu item
+    icon: string; // Icon representation (could also be a React element if needed)
+    href: string;
+  }
+  const menuItems: MenuItem[] = [
+    { id: 0, title: "Daskboard", icon: "💻", href: "/warden"  },
+    { id: 1, title: "Installation", icon: "⚙️" , href: "/warden/install" },
+    { id: 2, title: "Sync", icon: "🚀" , href: "/warden/sync" },
+    { id: 3, title: "Upgrade", icon: "⬆️", href: "/warden/upgrade"  },
+    { id: 4, title: "Command", icon: "💻", href: "/warden/command"  },
+    { id: 5, title: "Slinky", icon: "🔧" , href: "/warden/slinky" },
+  ];
 export default function AboutUsPage() {
   const WardenContent = () => {
     return (
