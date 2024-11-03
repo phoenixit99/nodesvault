@@ -60,7 +60,7 @@ const CodeBox: React.FC<CodeBoxProps> = ({ code, onCopy, hasCopied }) => (
   </Box>
 );
 export default function Menu() {
-  const [selectedId, setSelectedId] = useState<number | null>(0);
+  const [selectedId, setSelectedId] = useState<number | null>(null);
   const handleSelect = (id: number) => {
     setSelectedId(id);
   };
