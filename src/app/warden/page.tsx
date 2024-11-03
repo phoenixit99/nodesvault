@@ -58,7 +58,7 @@ export default function Wardenpage() {
           </VStack>
         </Box>
         <Box flex="1" p="20px">
-          {/* <WardenContent /> */}
+           <WardenContent /> 
         </Box>
       </Flex>
     </>
