@@ -177,9 +177,7 @@ export default function Page() {
                   gap={6}
                 >
                   {networks.map((network, index) => (
-                  <div key={index} onClick={() => handleSelect(network.name)}>
                     <NetworkCard key={index} network={network} />
-                    </div>
                   ))}
                 </Grid>
               </TabPanel>
