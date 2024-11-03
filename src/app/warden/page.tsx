@@ -1,6 +1,14 @@
 "use client";
 import { useState } from "react";
-import { Box, Flex, VStack, Text, Heading, Code, IconButton,  useClipboard,
+import {
+  Box,
+  Flex,
+  VStack,
+  Text,
+  Heading,
+  Code,
+  IconButton,
+  useClipboard,
 } from "@chakra-ui/react";
 import Header from "../components/Header";
 import { CopyIcon } from "@chakra-ui/icons";
@@ -117,7 +125,6 @@ export default function Menu() {
     );
   };
 
-
   const Command = () => {
     const codeSnippets = [
       {
@@ -221,11 +228,11 @@ export default function Menu() {
           `,
       },
     ];
-  
+
     return (
       <Flex direction="column" align="start" maxW="1200px" p={4} gap={6}>
         <Heading size="lg">Command</Heading>
-  
+
         {codeSnippets.map(({ title, code }, index) => {
           const { hasCopied, onCopy } = useClipboard(code);
           return (
@@ -239,7 +246,126 @@ export default function Menu() {
         })}
       </Flex>
     );
-  }
+  };
+
+  const Upgrade = () => {
+    const codeSnippets = [
+      {
+        title: "Upgrade for amd64:",
+        code: `
+            cd $HOME
+            wget https://github.com/warden-protocol/wardenprotocol/releases/download/v0.5.2/wardend_Linux_x86_64.zip
+            unzip wardend_Linux_x86_64.zip
+            rm wardend_Linux_x86_64.zip
+            chmod +x ~/wardend
+            sudo mv ~/wardend /usr/local/bin
+            sudo systemctl restart wardend && sudo journalctl -u wardend -f -o cat
+          `,
+      },
+      {
+        title: "Upgrade for arm64:",
+        code: `
+            cd $HOME
+            wget https://github.com/warden-protocol/wardenprotocol/releases/download/v0.5.2/wardend_Linux_arm64.zip
+            unzip wardend_Linux_arm64.zip
+            rm wardend_Linux_arm64.zip
+            chmod +x ~/wardend
+            sudo mv ~/wardend /usr/local/bin
+            sudo systemctl restart wardend && sudo journalctl -u wardend -f -o cat
+          `,
+      },
+    ];
+
+    return (
+      <Flex direction="column" align="start" maxW="1200px" p={4} gap={6}>
+        <Heading size="lg">Upgrade</Heading>
+
+        <Text fontSize="1xl">Chain: chiado_10010-1</Text>
+        <Text fontSize="1xl">Version: 0.5.2</Text>
+        <Text fontSize="1xl">Download Binary Warden Protocol:</Text>
+
+        {codeSnippets.map(({ title, code }, index) => {
+          const { hasCopied, onCopy } = useClipboard(code);
+          return (
+            <div key={index}>
+              <Text fontSize="lg" fontWeight="bold">
+                {title}
+              </Text>
+              <CodeBox code={code} onCopy={onCopy} hasCopied={hasCopied} />
+            </div>
+          );
+        })}
+      </Flex>
+    );
+  };
+
+  const Sync = () => {
+    const codeSnippets = [
+      {
+        title: "Download Genesis & addressbook:",
+        code: `
+            wget -O $HOME/.warden/config/genesis.json https://file.node39.top/testnet/warden/genesis.json
+            wget -O $HOME/.warden/config/addrbook.json https://file.node39.top/testnet/warden/addrbook.json
+          `,
+      },
+      {
+        title: "Download Wasm:",
+        code: `
+            rm -rf $HOME/.warden/data $HOME/.warden/wasm
+            curl https://file.node39.top/testnet/warden/wasm-warden.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.warden
+          `,
+      },
+      {
+        title: "Download snapshot: Height 6915",
+        code: `
+            sudo systemctl stop wardend
+            mv $HOME/.warden/data/priv_validator_state.json $HOME/.warden/priv_validator_state.json.backup
+            rm -rf $HOME/.warden/data $HOME/.warden/wasm
+            curl https://file.node39.top/testnet/warden/snapshot-warden-6915.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.warden
+            mv $HOME/.warden/priv_validator_state.json.backup $HOME/.warden/data/priv_validator_state.json
+            sudo systemctl restart wardend && sudo journalctl -u wardend -f --no-hostname -o cat
+          `,
+      },
+      {
+        title: "State sync:",
+        code: `
+            sudo systemctl stop wardend
+            cp $HOME/.warden/data/priv_validator_state.json $HOME/.warden/priv_validator_state.json
+            wardend tendermint unsafe-reset-all --home $HOME/.warden
+            SNAP_RPC="https://warden-testnet-rpc.node39.top:443"
+            LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height);
+            BLOCK_HEIGHT=$((LATEST_HEIGHT - 2000));
+            TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash)
+            echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH && sleep 2
+            sed -i.bak -E "s|^(enable[[:space:]]+=[[:space:]]+).*$|\x01true| ;
+            s|^(rpc_servers[[:space:]]+=[[:space:]]+).*$|\x01\"$SNAP_RPC,$SNAP_RPC\"| ;
+            s|^(trust_height[[:space:]]+=[[:space:]]+).*$|\x01$BLOCK_HEIGHT| ;
+            s|^(trust_hash[[:space:]]+=[[:space:]]+).*$|\x01\"$TRUST_HASH\"| ;
+            s|^(seeds[[:space:]]+=[[:space:]]+).*$|\x01\"\"|" $HOME/.warden/config/config.toml
+            mv $HOME/.warden/priv_validator_state.json $HOME/.warden/data/priv_validator_state.json
+            sudo systemctl restart wardend && sudo journalctl -u wardend -f --no-hostname -o cat
+          `,
+      },
+    ];
+
+    return (
+      <Flex direction="column" align="start" maxW="1200px" p={4} gap={6}>
+        <Heading size="lg">Sync</Heading>
+
+        {codeSnippets.map(({ title, code }, index) => {
+          const { hasCopied, onCopy } = useClipboard(code);
+          return (
+            <div key={index}>
+              <Text fontSize="1xl" fontWeight="bold">
+                {title}
+              </Text>
+              <CodeBox code={code} onCopy={onCopy} hasCopied={hasCopied} />
+            </div>
+          );
+        })}
+      </Flex>
+    );
+  };
 
   return (
     <div>
@@ -282,30 +408,17 @@ export default function Menu() {
             </p>
           )}
 
-          {selectedId === 2 && (
-            <p className="mt-4 text-center text-xl font-semibold text-gray-800">
-              Test
-            </p>
-          )}
+          {selectedId === 2 && <Sync />}
 
-          {selectedId === 3 && (
-            <p className="mt-4 text-center text-xl font-semibold text-gray-800">
-              Test
-            </p>
-          )}
+          {selectedId === 3 && <Upgrade />}
 
-          {selectedId === 4 && (
-            <Command />
-          )}
+          {selectedId === 4 && <Command />}
 
-          {selectedId === 5 && (
-             <SlinkyContent />
-          )}
+          {selectedId === 5 && <SlinkyContent />}
         </Box>
       </Flex>
     </div>
   );
-
 
   // const WardenContent = () => {
   //   return (
@@ -316,7 +429,7 @@ export default function Menu() {
   //           <Icon as={CheckCircleIcon} boxSize={6} color="green.400" />
   //           <Heading size="lg">Warden Protocol</Heading>
   //         </Stack>
-  
+
   //         {/* Subtitle */}
   //         <Text mt="2" fontSize="lg">
   //           Next-gen Modular L1 Blockchain Infrastructure for Omnichain
@@ -329,7 +442,7 @@ export default function Menu() {
   //             style={{ borderRadius: "8px" }}
   //           />
   //         </Box> */}
-  
+
   //         {/* Hardware Minimum */}
   //         <Heading size="md" mt="8">
   //           Hardware minimum:
@@ -340,7 +453,7 @@ export default function Menu() {
   //           <ListItem>• 80 GB SSD NVMe</ListItem>
   //           <ListItem>• Ubuntu 22 - x86 or arm</ListItem>
   //         </List>
-  
+
   //         {/* Links */}
   //         <Heading size="md" mt="8">
   //           Links:
@@ -383,7 +496,7 @@ export default function Menu() {
   //             </Link>
   //           </ListItem>
   //         </List>
-  
+
   //         <Heading size="md" mt="8">
   //           NodesVault Support:
   //         </Heading>
