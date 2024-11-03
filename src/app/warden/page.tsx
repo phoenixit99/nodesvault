@@ -60,7 +60,7 @@ const CodeBox: React.FC<CodeBoxProps> = ({ code, onCopy, hasCopied }) => (
   </Box>
 );
 export default function Menu() {
-  const [selectedId, setSelectedId] = useState<number | null>(null);
+  const [selectedId, setSelectedId] = useState<number | null>(0);
   const handleSelect = (id: number) => {
     setSelectedId(id);
   };
@@ -706,7 +706,6 @@ export default function Menu() {
                 borderRadius="md"
                 _hover={{ bg: "blue.200", color: "white" }}
                 bg={selectedId === item.id ? "blue.500" : "transparent"} // Show selected background color
-                color={selectedId === item.id ? "white" : "black"} // Show selected text color
               >
                 <Flex align="center">
                   <Text fontSize="lg">{item.icon}</Text>
