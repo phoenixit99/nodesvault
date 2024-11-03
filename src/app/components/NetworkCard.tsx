@@ -32,7 +32,7 @@ const NetworkCard: React.FC<NetworkCardProps> = ({ network }) => {
     >
       <VStack spacing={4}>
         <Image src={network.logo} alt={network.name} boxSize="50px" />
-        <Link href="/warden">
+        <Link href={network.href}>
           {" "}
           <Text fontSize="xl" fontWeight="bold">
             {network.name}
@@ -47,12 +47,12 @@ const NetworkCard: React.FC<NetworkCardProps> = ({ network }) => {
         <HStack spacing={2}>
           <Button size="sm" colorScheme="teal">
             {" "}
-            <Link href="https://explorer.nodesvault.com/warden-testnet/">
+            <Link href="https://explorer.nodesvault.com">
               Services
             </Link>
           </Button>
           <Button size="sm" colorScheme="teal">
-            <Link href="https://explorer.nodesvault.com/warden-testnet/">
+            <Link href="https://explorer.nodesvault.com">
               Explorer
             </Link>
           </Button>

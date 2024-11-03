@@ -36,7 +36,7 @@ interface CodeBoxProps {
 const CodeBox: React.FC<CodeBoxProps> = ({ code, onCopy, hasCopied }) => (
   <Box
     position="relative"
-    width="100%"
+    width="1024px"
     p={4}
     border="1px solid"
     borderColor="gray.200"
