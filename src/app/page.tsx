@@ -19,7 +19,6 @@ import Footer from "./components/Footer";
 import TopView from "./components/TopView";
 import { FaGithub, FaTelegramPlane, FaTwitter } from "react-icons/fa";
 import HorizontalCardList from "./components/HorizontalCardList";
-import { useRouter } from 'next/navigation';
 
 // Define the interface for a network object
 interface Network {
@@ -28,17 +27,9 @@ interface Network {
   logo: string;
 }
 const networks: Network[] = [
-  // {
-  //   // name: "Kopi",
-  //   // apy: "soon",
-  //   // logo: "https://test.kopi.money/_next/static/media/kopi-logo.669f44c9.svg",
-  //   name: "Warden",
-  //   apy: "~10",
-  //   logo: "https://itrocket.net/_next/image/?url=%2Ftestnet%2Fwarden.png&w=96&q=75",
-  // },
   {
     name: "Warden",
-    apy: "~10",
+    apy: "soon",
     logo: "https://itrocket.net/_next/image/?url=%2Ftestnet%2Fwarden.png&w=96&q=75",
   },
   {
