@@ -14,12 +14,27 @@ import {
 import { CopyIcon } from "@chakra-ui/icons";
 import Header from "../../components/Header";
 
-
 interface CodeBoxProps {
   code: string;
   onCopy: () => void;
   hasCopied: boolean;
 }
+
+interface MenuItem {
+  id: number; // Unique identifier
+  title: string; // Title of the menu item
+  icon: string; // Icon representation (could also be a React element if needed)
+  href: string;
+}
+const menuItems: MenuItem[] = [
+  { id: 0, title: "Daskboard", icon: "💻", href: "/wardenprotocol"  },
+  { id: 1, title: "Installation", icon: "⚙️" , href: "/wardenprotocol/install" },
+  { id: 2, title: "Sync", icon: "🚀" , href: "/wardenprotocol/sync" },
+  { id: 3, title: "Upgrade", icon: "⬆️", href: "/wardenprotocol/upgrade"  },
+  { id: 4, title: "Command", icon: "💻", href: "/wardenprotocol/command"  },
+  { id: 5, title: "Slinky", icon: "🔧" , href: "/wardenprotocol/slinky" },
+];
+
 const CodeBox: React.FC<CodeBoxProps> = ({ code, onCopy, hasCopied }) => (
   <Box
     position="relative"
@@ -46,20 +61,6 @@ const CodeBox: React.FC<CodeBoxProps> = ({ code, onCopy, hasCopied }) => (
     {hasCopied && <Text color="green.500">Copied to clipboard!</Text>}
   </Box>
 );
-interface MenuItem {
-    id: number; // Unique identifier
-    title: string; // Title of the menu item
-    icon: string; // Icon representation (could also be a React element if needed)
-    href: string;
-  }
-const menuItems: MenuItem[] = [
-    { id: 0, title: "Daskboard", icon: "💻", href: "/warden"  },
-    { id: 1, title: "Installation", icon: "⚙️" , href: "/warden/install" },
-    { id: 2, title: "Sync", icon: "🚀" , href: "/warden/sync" },
-    { id: 3, title: "Upgrade", icon: "⬆️", href: "/warden/upgrade"  },
-    { id: 4, title: "Command", icon: "💻", href: "/warden/command"  },
-    { id: 5, title: "Slinky", icon: "🔧" , href: "/warden/slinky" },
-  ];
   export default function Wardenpage() {
     return (
       <>
@@ -72,7 +73,6 @@ const menuItems: MenuItem[] = [
                 style={{ textDecoration: "none" }}
                href={item.href}
                 >
-             
                 <Flex
                   align="center"
                   cursor="pointer"
@@ -90,57 +90,73 @@ const menuItems: MenuItem[] = [
           </VStack>
         </Box>
         <Box flex="1" p="20px">
-          <Upgrade />
+          <SlinkyContent />
         </Box>
       </Flex>
     </>
   );
 }
-function Upgrade() {
+
+
+function SlinkyContent() {
   const codeSnippets = [
     {
-      title: "Upgrade for amd64:",
+      title: "Download Binary Slinky:",
       code: `
           cd $HOME
-          wget https://github.com/warden-protocol/wardenprotocol/releases/download/v0.5.2/wardend_Linux_x86_64.zip
-          unzip wardend_Linux_x86_64.zip
-          rm wardend_Linux_x86_64.zip
-          chmod +x ~/wardend
-          sudo mv ~/wardend /usr/local/bin
-          sudo systemctl restart wardend && sudo journalctl -u wardend -f -o cat
+          rm -rf connect
+          git clone https://github.com/skip-mev/connect.git
+          cd connect
+          git checkout v1.0.5
+          make install
+          slinky version
         `,
     },
     {
-      title: "Upgrade for arm64:",
+      title: "Create a Service for Slinky:",
       code: `
-          cd $HOME
-          wget https://github.com/warden-protocol/wardenprotocol/releases/download/v0.5.2/wardend_Linux_arm64.zip
-          unzip wardend_Linux_arm64.zip
-          rm wardend_Linux_arm64.zip
-          chmod +x ~/wardend
-          sudo mv ~/wardend /usr/local/bin
-          sudo systemctl restart wardend && sudo journalctl -u wardend -f -o cat
+          SLINKY_PORT=$(grep 'address = ' "$HOME/.warden/config/app.toml" | awk -F: '{print $NF}' | grep '90"$' | tr -d '"')
+          echo $SLINKY_PORT
+
+          tee /etc/systemd/system/slinky.service > /dev/null <<EOF
+          [Unit]
+          Description=Slinky Oracle Warden
+          After=network-online.target
+
+          [Service]
+          User=$USER
+          ExecStart=$(which slinky) --market-map-endpoint="127.0.0.1:$SLINKY_PORT"
+          Restart=on-failure
+          RestartSec=3
+          LimitNOFILE=65535
+
+          [Install]
+          WantedBy=multi-user.target
+          EOF
+        `,
+    },
+    {
+      title: "Manage Slinky Service:",
+      code: `
+          systemctl daemon-reload
+          systemctl enable slinky
+          systemctl restart slinky && journalctl -u slinky -f -o cat
         `,
     },
   ];
 
   return (
     <Flex direction="column" align="start" maxW="1200px" p={4} gap={6}>
-              <Heading size="lg">Upgrade</Heading>
-
-      <Text fontSize="1xl">Chain: chiado_10010-1</Text>
-      <Text fontSize="1xl">Version: 0.5.2</Text>
-      <Text fontSize="1xl">Download Binary Warden Protocol:</Text>
-
+       <Heading size="lg">Slinky</Heading>
       {codeSnippets.map(({ title, code }, index) => {
         const { hasCopied, onCopy } = useClipboard(code);
         return (
-          <>
-            <Text fontSize="lg" fontWeight="bold">
+          <div key={index}>
+            <Text fontSize="1xl" fontWeight="bold">
               {title}
             </Text>
             <CodeBox code={code} onCopy={onCopy} hasCopied={hasCopied} />
-          </>
+          </div>
         );
       })}
     </Flex>

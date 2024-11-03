@@ -14,12 +14,12 @@ import {
 import { CopyIcon } from "@chakra-ui/icons";
 import Header from "../../components/Header";
 
+
 interface CodeBoxProps {
   code: string;
   onCopy: () => void;
   hasCopied: boolean;
 }
-
 const CodeBox: React.FC<CodeBoxProps> = ({ code, onCopy, hasCopied }) => (
   <Box
     position="relative"
@@ -72,6 +72,7 @@ const menuItems: MenuItem[] = [
                 style={{ textDecoration: "none" }}
                href={item.href}
                 >
+             
                 <Flex
                   align="center"
                   cursor="pointer"
@@ -89,69 +90,53 @@ const menuItems: MenuItem[] = [
           </VStack>
         </Box>
         <Box flex="1" p="20px">
-          <SlinkyContent />
+          <Upgrade />
         </Box>
       </Flex>
     </>
   );
 }
-
-
-function SlinkyContent() {
+function Upgrade() {
   const codeSnippets = [
     {
-      title: "Download Binary Slinky:",
+      title: "Upgrade for amd64:",
       code: `
           cd $HOME
-          rm -rf connect
-          git clone https://github.com/skip-mev/connect.git
-          cd connect
-          git checkout v1.0.5
-          make install
-          slinky version
+          wget https://github.com/warden-protocol/wardenprotocol/releases/download/v0.5.2/wardend_Linux_x86_64.zip
+          unzip wardend_Linux_x86_64.zip
+          rm wardend_Linux_x86_64.zip
+          chmod +x ~/wardend
+          sudo mv ~/wardend /usr/local/bin
+          sudo systemctl restart wardend && sudo journalctl -u wardend -f -o cat
         `,
     },
     {
-      title: "Create a Service for Slinky:",
+      title: "Upgrade for arm64:",
       code: `
-          SLINKY_PORT=$(grep 'address = ' "$HOME/.warden/config/app.toml" | awk -F: '{print $NF}' | grep '90"$' | tr -d '"')
-          echo $SLINKY_PORT
-
-          tee /etc/systemd/system/slinky.service > /dev/null <<EOF
-          [Unit]
-          Description=Slinky Oracle Warden
-          After=network-online.target
-
-          [Service]
-          User=$USER
-          ExecStart=$(which slinky) --market-map-endpoint="127.0.0.1:$SLINKY_PORT"
-          Restart=on-failure
-          RestartSec=3
-          LimitNOFILE=65535
-
-          [Install]
-          WantedBy=multi-user.target
-          EOF
-        `,
-    },
-    {
-      title: "Manage Slinky Service:",
-      code: `
-          systemctl daemon-reload
-          systemctl enable slinky
-          systemctl restart slinky && journalctl -u slinky -f -o cat
+          cd $HOME
+          wget https://github.com/warden-protocol/wardenprotocol/releases/download/v0.5.2/wardend_Linux_arm64.zip
+          unzip wardend_Linux_arm64.zip
+          rm wardend_Linux_arm64.zip
+          chmod +x ~/wardend
+          sudo mv ~/wardend /usr/local/bin
+          sudo systemctl restart wardend && sudo journalctl -u wardend -f -o cat
         `,
     },
   ];
 
   return (
     <Flex direction="column" align="start" maxW="1200px" p={4} gap={6}>
-       <Heading size="lg">Slinky</Heading>
+              <Heading size="lg">Upgrade</Heading>
+
+      <Text fontSize="1xl">Chain: chiado_10010-1</Text>
+      <Text fontSize="1xl">Version: 0.5.2</Text>
+      <Text fontSize="1xl">Download Binary Warden Protocol:</Text>
+
       {codeSnippets.map(({ title, code }, index) => {
         const { hasCopied, onCopy } = useClipboard(code);
         return (
           <div key={index}>
-            <Text fontSize="1xl" fontWeight="bold">
+            <Text fontSize="lg" fontWeight="bold">
               {title}
             </Text>
             <CodeBox code={code} onCopy={onCopy} hasCopied={hasCopied} />
