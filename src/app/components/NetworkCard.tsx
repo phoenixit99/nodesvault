@@ -32,12 +32,12 @@ const NetworkCard: React.FC<NetworkCardProps> = ({ network }) => {
     >
       <VStack spacing={4}>
         <Image src={network.logo} alt={network.name} boxSize="50px" />
-        <Link href="/warden">
-          {" "}
+        {/* <Link href="/warden">
+          {" "} */}
           <Text fontSize="xl" fontWeight="bold">
             {network.name}
           </Text>
-        </Link>
+        {/* </Link> */}
         <Text color="black.500">APY: {network.apy}</Text>
 
         <Text color="black.500" cursor="pointer">

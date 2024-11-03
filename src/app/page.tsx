@@ -19,6 +19,7 @@ import Footer from "./components/Footer";
 import TopView from "./components/TopView";
 import { FaGithub, FaTelegramPlane, FaTwitter } from "react-icons/fa";
 import HorizontalCardList from "./components/HorizontalCardList";
+import { useRouter } from "next/navigation";
 
 // Define the interface for a network object
 interface Network {
@@ -30,7 +31,8 @@ const networks: Network[] = [
   {
     name: "Kopi",
     apy: "soon",
-    logo: "https://test.kopi.money/_next/static/media/kopi-logo.669f44c9.svg"  },
+    logo: "https://test.kopi.money/_next/static/media/kopi-logo.669f44c9.svg",
+  },
   {
     name: "Warden",
     apy: "soon",
@@ -68,19 +70,19 @@ const networks: Network[] = [
   },
 ];
 export default function Page() {
-  // const router = useRouter()
+  const router = useRouter();
 
-  // const handleSelect = (network: string) => {
-  //   if (network === 'Kopi') {
-  //     router.push('/kopi');
-  //   } else {
-  //     router.push('/warden');
-  //   }
-  // };
+  const handleSelect = (network: string) => {
+    if (network.toLowerCase() === "kopi") {
+      router.push("/kopi");
+    } else {
+      router.push("/warden");
+    }
+  };
   return (
     <div>
       <Header />
-       <VStack
+      <VStack
         paddingTop={100}
         alignItems="center"
         textAlign="center"
@@ -158,7 +160,7 @@ export default function Page() {
           </Box>
         </Box>
 
-       <HorizontalCardList />
+        <HorizontalCardList />
 
         <Box p={8} w="100%">
           <Text fontSize="4xl" fontWeight="bold" mb={4} textAlign="left">
@@ -175,16 +177,18 @@ export default function Page() {
                   gap={6}
                 >
                   {networks.map((network, index) => (
-                    <NetworkCard key={index} network={network} />
+                    <div key={index} onClick={() => handleSelect(network.name)}>
+                      <NetworkCard key={index} network={network} />
+                    </div>
                   ))}
                 </Grid>
               </TabPanel>
             </TabPanels>
           </Tabs>
-        </Box>  
+        </Box>
       </VStack>
       <TopView />
-      <Footer /> 
+      <Footer />
     </div>
   );
 }
