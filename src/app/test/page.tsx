@@ -30,8 +30,11 @@ const menuItems: MenuItem[] = [
   { id: 5, title: "Slinky", icon: "🔧", href: "/wardenprotocol/slinky" },
 ];
 export default function AboutUsPage() {
-  const [selectedId, setSelectedId] = useState<number | null>(0);
+  const [selectedId, setSelectedId] = useState(null); // Initialize selectedId state
 
+  const handleSelect = (id) => {
+    setSelectedId(id);
+  };
   const WardenContent = () => {
     return (
       <VStack alignItems={"center"} maxW="100%" width={"100%"}>
@@ -167,22 +170,21 @@ export default function AboutUsPage() {
 
   return (
     <div>
-      <Header />
       <Flex width="100%">
         <Box width="250px" padding="20px">
           <VStack align="start" spacing={6}>
             {menuItems.map((item) => (
-              <Link
-                key={item.id}
-                style={{ textDecoration: "none" }}
-                onClick={() => setSelectedId(item.id)}
-              >
+              <Link href={item.href} key={item.id} passHref>
                 <Flex
+                  as="a" // Treat as an anchor tag to avoid nesting issues
                   align="center"
                   cursor="pointer"
                   p={2}
                   borderRadius="md"
+                  onClick={() => handleSelect(item.id)}
                   _hover={{ bg: "blue.200", color: "white" }}
+                  bg={selectedId === item.id ? "blue.500" : "transparent"} // Show selected background color
+                  color={selectedId === item.id ? "white" : "black"} // Show selected text color
                 >
                   <Text fontSize="lg">{item.icon}</Text>
                   <Text ml={3} fontSize="md">
@@ -193,18 +195,20 @@ export default function AboutUsPage() {
             ))}
           </VStack>
         </Box>
-        <Box flex="1" p="20px"></Box>
-        {/* <WardenContent></WardenContent> */}
-        {selectedId === 0 && (
-          <p className="mt-4 text-center text-xl font-semibold text-gray-800">
-            Hello
-          </p>
-        )}
-        {selectedId === 1 && (
-          <p className="mt-4 text-center text-xl font-semibold text-gray-800">
-            Test
-          </p>
-        )}
+        
+        {/* Content Area */}
+        <Box flex="1" p="20px">
+          {selectedId === 0 && (
+            <p className="mt-4 text-center text-xl font-semibold text-gray-800">
+              Hello
+            </p>
+          )}
+          {selectedId === 1 && (
+            <p className="mt-4 text-center text-xl font-semibold text-gray-800">
+              Test
+            </p>
+          )}
+        </Box>
       </Flex>
     </div>
   );
