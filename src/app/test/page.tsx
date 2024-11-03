@@ -1,5 +1,5 @@
 "use client";
-
+import { useState } from "react";
 import { Box, Flex, Link, VStack,Text, ListItem, List, Heading, Stack, Icon } from "@chakra-ui/react";
 import Header from "../components/Header";
 import { CheckCircleIcon } from "@chakra-ui/icons";
@@ -19,6 +19,13 @@ interface MenuItem {
     { id: 5, title: "Slinky", icon: "🔧" , href: "/wardenprotocol/slinky" },
   ];
 export default function AboutUsPage() {
+
+  const [selectedId, setSelectedId] = useState(0); // Default to the first item
+
+  const handleSelect = (id) => {
+    setSelectedId(id);
+  };
+
   const WardenContent = () => {
     return (
       <VStack alignItems={"center"} maxW="100%" width={"100%"}>
@@ -157,7 +164,7 @@ export default function AboutUsPage() {
             {menuItems.map((item) => (
               <Link key={item.id}
               style={{ textDecoration: "none" }}
-              href={item.href}
+
               >
                 <Flex
                   align="center"
@@ -177,7 +184,12 @@ export default function AboutUsPage() {
         </Box>
         <Box flex="1" p="20px">
         </Box>
-         <WardenContent></WardenContent>
+         {/* <WardenContent></WardenContent> */}
+         {selectedId === 0 && (
+        <p className="mt-4 text-center text-xl font-semibold text-gray-800">
+          Hello
+        </p>
+      )}
       </Flex>
     </div>
   );
