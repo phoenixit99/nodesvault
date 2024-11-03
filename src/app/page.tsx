@@ -28,7 +28,7 @@ interface Network {
 }
 const networks: Network[] = [
   {
-    name: "Kopi",
+    name: "Warden",
     apy: "soon",
     logo: "https://itrocket.net/_next/image/?url=%2Ftestnet%2Fwarden.png&w=96&q=75",
   },
@@ -161,7 +161,7 @@ export default function Page() {
 
        <HorizontalCardList />
 
-        {/* <Box p={8} w="100%">
+        <Box p={8} w="100%">
           <Text fontSize="4xl" fontWeight="bold" mb={4} textAlign="left">
             Networks
           </Text>
@@ -182,7 +182,7 @@ export default function Page() {
               </TabPanel>
             </TabPanels>
           </Tabs>
-        </Box>  */}
+        </Box>  
       </VStack>
       <TopView />
       <Footer /> 
