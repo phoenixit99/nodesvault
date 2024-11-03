@@ -15,6 +15,7 @@ import {
 } from "@chakra-ui/react";
 import { CheckCircleIcon } from "@chakra-ui/icons";
 import Header from "../components/Header";
+
 interface MenuItem {
   id: number; // Unique identifier
   title: string; // Title of the menu item
@@ -61,7 +62,7 @@ export default function Wardenpage() {
      
         </Box>
       </Flex> */}
-       <WardenContent /> 
+       {/* <WardenContent />  */}
     </div>
   );
 }
