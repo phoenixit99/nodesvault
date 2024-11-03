@@ -19,6 +19,15 @@ const Header = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   const isDark = colorMode === "dark";
 
+  const router = useRouter();
+
+  const handleSelect = (network: string) => {
+    if (network.toLowerCase() === "kopi") {
+      router.push("/kopi");
+    } else {
+      router.push("/warden");
+    }
+  };
 
   return (
     <Box
@@ -50,7 +59,7 @@ const Header = () => {
         <HStack spacing={8} alignItems="center">
           <HStack as="nav" spacing={4} display={{ base: "none", md: "flex" }}>
             {["Networks", "Services", "Explorer", "FAQ"].map((item) => (
-              <Link key={item} href="http://explorer.nodesvault.com"  fontWeight="medium">
+              <Link key={item} href={`#${item.toLowerCase()}`} fontWeight="medium">
                 {item}
               </Link>
             ))}
@@ -68,7 +77,7 @@ const Header = () => {
         <Box pb={4} display={{ md: "none" }}>
           <Stack as="nav" spacing={4}>
             {["Networks", "Services", "Explorer", "FAQ"].map((item) => (
-              <Link key={item} href="http://explorer.nodesvault.com">
+              <Link key={item} href={`#${item.toLowerCase()}`}>
                 {item}
               </Link>
             ))}
