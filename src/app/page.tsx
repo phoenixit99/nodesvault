@@ -31,7 +31,37 @@ const networks: Network[] = [
     name: "Warden",
     apy: "soon",
     logo: "https://itrocket.net/_next/image/?url=%2Ftestnet%2Fwarden.png&w=96&q=75",
-  }
+  },
+  {
+    name: "Crossfi",
+    apy: "soon",
+    logo: "https://itrocket.net/_next/image/?url=%2Fmainnet%2Fcrossfi.jpg&w=256&q=75",
+  },
+  {
+    name: "Doravota",
+    apy: "~10%",
+    logo: "https://itrocket.net/_next/image/?url=%2Fmainnet%2Fdoravota.jpg&w=256&q=75",
+  },
+  {
+    name: "Empower",
+    apy: "~70%",
+    logo: "https://itrocket.net/_next/image/?url=%2Fmainnet%2Fempower.png&w=256&q=75",
+  },
+  {
+    name: "Forta",
+    apy: "soon",
+    logo: "https://itrocket.net/_next/image/?url=%2Fmainnet%2Fforta.jpg&w=256&q=75",
+  },
+  {
+    name: "Humans",
+    apy: "~41%",
+    logo: "https://itrocket.net/_next/image/?url=%2Fmainnet%2Fhumans.jpg&w=256&q=75",
+  },
+  {
+    name: "Lava",
+    apy: "soon",
+    logo: "https://itrocket.net/_next/image/?url=%2Fmainnet%2Flava.jpg&w=256&q=75",
+  },
 ];
 export default function Page() {
   // const router = useRouter()
@@ -140,9 +170,9 @@ export default function Page() {
                   templateColumns="repeat(auto-fill, minmax(300px, 1fr))"
                   gap={6}
                 >
-                  {networks.map((network, index) => (
-                    <NetworkCard key={index} network={network} />
-                  ))}
+                  {/* {networks.map((network, index) => (
+                    // <NetworkCard key={index} network={network} />
+                  ))} */}
                 </Grid>
               </TabPanel>
             </TabPanels>
