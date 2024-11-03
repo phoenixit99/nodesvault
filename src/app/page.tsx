@@ -14,7 +14,6 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import NetworkCard from "./components/NetworkCard";
-
 import Footer from "./components/Footer";
 import TopView from "./components/TopView";
 import { FaGithub, FaTelegramPlane, FaTwitter } from "react-icons/fa";
@@ -25,7 +24,6 @@ interface Network {
   apy: string;
   logo: string;
 }
-
 const networks: Network[] = [
   {
     name: "Warden",
@@ -70,9 +68,9 @@ const networks: Network[] = [
 ];
 export default function Page() {
   return (
-    <>
+    <div>
     <Header />
-    <VStack
+    {/* <VStack
       paddingTop={100}
       alignItems="center"
       textAlign="center"
@@ -133,7 +131,7 @@ export default function Page() {
       </Box>
     </VStack>
     <TopView />
-    <Footer />
-  </>
+    <Footer /> */}
+  </div>
   );
 }

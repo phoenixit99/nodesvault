@@ -1,12 +1,10 @@
-import { ChakraProvider } from '@chakra-ui/react'
 import type { AppProps } from 'next/app'
-
-function MyApp({ Component, pageProps }: AppProps) {
+import { ThemeProvider } from "@material-tailwind/react";
+ 
+export default function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ChakraProvider>
+    <ThemeProvider>
       <Component {...pageProps} />
-    </ChakraProvider>
-  )
+    </ThemeProvider>
+  );
 }
-
-export default MyApp
