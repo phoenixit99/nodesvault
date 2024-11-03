@@ -48,8 +48,8 @@ const Header = () => {
         {/* Desktop Menu and Color Mode Toggle */}
         <HStack spacing={8} alignItems="center">
           <HStack as="nav" spacing={4} display={{ base: "none", md: "flex" }}>
-            {["Networks", "Services", "Explorer"].map((item) => (
-              <Link key={item} href={`http://explorer.nodesvault.com`} fontWeight="medium">
+            {["Networks", "Services", "Explorer", "FAQ"].map((item) => (
+              <Link key={item} href={`#${item.toLowerCase()}`} fontWeight="medium">
                 {item}
               </Link>
             ))}
@@ -66,8 +66,8 @@ const Header = () => {
       {isOpen && (
         <Box pb={4} display={{ md: "none" }}>
           <Stack as="nav" spacing={4}>
-            {["Networks", "Services", "Explorer"].map((item) => (
-              <Link key={item} href={`http://explorer.nodesvault.com`}>
+            {["Networks", "Services", "Explorer", "FAQ"].map((item) => (
+              <Link key={item} href={`#${item.toLowerCase()}`}>
                 {item}
               </Link>
             ))}
