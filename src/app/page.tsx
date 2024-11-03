@@ -81,7 +81,7 @@ export default function Page() {
   return (
     <div>
       <Header />
-      {/* <VStack
+       <VStack
         paddingTop={100}
         alignItems="center"
         textAlign="center"
@@ -159,7 +159,7 @@ export default function Page() {
           </Box>
         </Box>
 
-        <HorizontalCardList />
+        {/* <HorizontalCardList />
 
         <Box p={8} w="100%">
           <Text fontSize="4xl" fontWeight="bold" mb={4} textAlign="left">
@@ -182,10 +182,10 @@ export default function Page() {
               </TabPanel>
             </TabPanels>
           </Tabs>
-        </Box>
+        </Box> */}
       </VStack>
-      <TopView /> */}
-      {/* <Footer /> */}
+      <TopView />
+      <Footer /> 
     </div>
   );
 }
