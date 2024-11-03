@@ -30,11 +30,7 @@ const menuItems: MenuItem[] = [
   { id: 5, title: "Slinky", icon: "🔧", href: "/wardenprotocol/slinky" },
 ];
 export default function AboutUsPage() {
-  const [selectedId, setSelectedId] = useState(0); // Default to the first item
-
-  const handleSelect = (id: number) => {
-    setSelectedId(id);
-  };
+  const [selectedId, setSelectedId] = useState<number | null>(0);
 
   const WardenContent = () => {
     return (
@@ -179,7 +175,7 @@ export default function AboutUsPage() {
               <Link
                 key={item.id}
                 style={{ textDecoration: "none" }}
-                onClick={() => handleSelect(item.id)}
+                onClick={() => setSelectedId(item.id)}
               >
                 <Flex
                   align="center"
