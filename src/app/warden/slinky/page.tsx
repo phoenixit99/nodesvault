@@ -12,7 +12,7 @@ import {
   Heading,
 } from "@chakra-ui/react";
 import { CopyIcon } from "@chakra-ui/icons";
-import Header from "../components/Header";
+import Header from "../../components/Header";
 
 interface CodeBoxProps {
   code: string;
