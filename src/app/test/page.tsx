@@ -164,7 +164,7 @@ export default function AboutUsPage() {
             {menuItems.map((item) => (
               <Link key={item.id}
               style={{ textDecoration: "none" }}
-
+              onClick={() => handleSelect(item.id)}
               >
                 <Flex
                   align="center"
