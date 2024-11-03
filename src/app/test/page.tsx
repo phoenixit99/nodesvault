@@ -25,7 +25,7 @@ export default function Menu() {
         <Box width="250px" padding="20px">
           <VStack align="start" spacing={6}>
             {menuItems.map((item) => (
-              <Link href={item.href} key={item.id} passHref>
+              <Link href={''} key={item.id} passHref>
                 <Box
                   as="div" // Use div instead of a tag
                   onClick={() => handleSelect(item.id)}
