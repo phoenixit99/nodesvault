@@ -1,7 +1,6 @@
-"use client";
+'use client'
 import { useState } from "react";
 import { Box, Flex, VStack, Text } from "@chakra-ui/react";
-import Header from "../components/Header";
 
 const menuItems = [
   { id: 0, title: "Dashboard", icon: "💻" },
@@ -21,8 +20,6 @@ export default function Menu() {
 
   return (
     <div>
-      <Header />
-
       <Flex width="100%">
         <Box width="250px" padding="20px">
           <VStack align="start" spacing={6}>
@@ -47,7 +44,7 @@ export default function Menu() {
             ))}
           </VStack>
         </Box>
-
+        
         {/* Content Area */}
         <Box flex="1" p="20px">
           {selectedId === 0 && (
