@@ -186,9 +186,7 @@ export default function AboutUsPage() {
         <Box flex="1" p="20px">
         </Box>
         {selectedId === 0 && (
-        <p className="mt-4 text-center text-xl font-semibold text-gray-800">
          <WardenContent></WardenContent>
-        </p>
       )}
       </Flex>
     </div>
