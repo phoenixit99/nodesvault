@@ -16,7 +16,7 @@ interface MenuItem {
     { id: 2, title: "Sync", icon: "🚀" , href: "/wardenprotocol/sync" },
     { id: 3, title: "Upgrade", icon: "⬆️", href: "/wardenprotocol/upgrade"  },
     { id: 4, title: "Command", icon: "💻", href: "/wardenprotocol/command"  },
-    { id: 5, title: "Slinky", icon: "🔧" , href: "/testnet/slinky" },
+    { id: 5, title: "Slinky", icon: "🔧" , href: "/slinky" },
   ];
 export default function AboutUsPage() {
   const WardenContent = () => {

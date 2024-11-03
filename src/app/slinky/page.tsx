@@ -12,7 +12,7 @@ import {
   Heading,
 } from "@chakra-ui/react";
 import { CopyIcon } from "@chakra-ui/icons";
-import Header from "../../components/Header";
+import Header from "../components/Header";
 
 interface CodeBoxProps {
   code: string;
@@ -32,7 +32,7 @@ const menuItems: MenuItem[] = [
   { id: 2, title: "Sync", icon: "🚀", href: "/wardenprotocol/sync" },
   { id: 3, title: "Upgrade", icon: "⬆️", href: "/wardenprotocol/upgrade" },
   { id: 4, title: "Command", icon: "💻", href: "/wardenprotocol/command" },
-  { id: 5, title: "Slinky", icon: "🔧", href: "/testnet/slinky" },
+  { id: 5, title: "Slinky", icon: "🔧", href: "/slinky" },
 ];
 
 const CodeBox: React.FC<CodeBoxProps> = ({ code, onCopy, hasCopied }) => (
