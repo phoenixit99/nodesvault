@@ -111,7 +111,7 @@ export default function Page() {
       </Box>
   
       <HorizontalCardList />
-{/*   
+ 
       <Box p={8} w="100%">
         <Text fontSize="4xl" fontWeight="bold" mb={4} textAlign="left">Networks</Text>
         <Tabs colorScheme="teal">
@@ -128,7 +128,7 @@ export default function Page() {
             </TabPanel>
           </TabPanels>
         </Tabs>
-      </Box> */}
+      </Box> 
 
     </VStack>
     <TopView />
