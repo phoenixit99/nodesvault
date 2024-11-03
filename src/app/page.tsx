@@ -28,6 +28,10 @@ interface Network {
 }
 const networks: Network[] = [
   {
+    name: "Kopi",
+    apy: "soon",
+    logo: "https://test.kopi.money/_next/static/media/kopi-logo.669f44c9.svg"  },
+  {
     name: "Warden",
     apy: "soon",
     logo: "https://itrocket.net/_next/image/?url=%2Ftestnet%2Fwarden.png&w=96&q=75",
