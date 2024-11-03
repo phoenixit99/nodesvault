@@ -748,6 +748,12 @@ export default function Menu() {
           {selectedId === 4 && <Command />}
 
           {selectedId === 5 && <SlinkyContent />}
+          {selectedId !== 0 &&
+            selectedId !== 1 &&
+            selectedId !== 2 &&
+            selectedId !== 3 &&
+            selectedId !== 4 &&
+            selectedId !== 5 && <WardenContent />}
         </Box>
       </Flex>
     </div>
