@@ -28,6 +28,11 @@ interface Network {
 }
 const networks: Network[] = [
   {
+    name: "Kopi",
+    apy: "soon",
+    logo: "https://test.kopi.money/_next/static/media/kopi-logo.669f44c9.svg",
+  },
+  {
     name: "Warden",
     apy: "soon",
     logo: "https://itrocket.net/_next/image/?url=%2Ftestnet%2Fwarden.png&w=96&q=75",
@@ -76,7 +81,7 @@ export default function Page() {
   return (
     <div>
       <Header />
-      <VStack
+      {/* <VStack
         paddingTop={100}
         alignItems="center"
         textAlign="center"
@@ -170,17 +175,17 @@ export default function Page() {
                   templateColumns="repeat(auto-fill, minmax(300px, 1fr))"
                   gap={6}
                 >
-                 {networks.map((network, index) => (
-                   <NetworkCard key={index} network={network} />
-                  ))} 
+                  {networks.map((network, index) => (
+                    <NetworkCard key={index} network={network} />
+                  ))}
                 </Grid>
               </TabPanel>
             </TabPanels>
           </Tabs>
         </Box>
       </VStack>
-      <TopView />
-      <Footer />
+      <TopView /> */}
+      {/* <Footer /> */}
     </div>
   );
 }
