@@ -150,12 +150,12 @@ function SlinkyContent() {
       {codeSnippets.map(({ title, code }, index) => {
         const { hasCopied, onCopy } = useClipboard(code);
         return (
-          <>
+          <div key={index}>
             <Text fontSize="1xl" fontWeight="bold">
               {title}
             </Text>
             <CodeBox code={code} onCopy={onCopy} hasCopied={hasCopied} />
-          </>
+          </div>
         );
       })}
     </Flex>

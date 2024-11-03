@@ -33,7 +33,7 @@ export default function Wardenpage() {
   return (
     <div>
       <Header />
-      <Flex width="100%">
+      {/* <Flex width="100%">
         <Box width="250px" padding="20px">
           <VStack align="start" spacing={6}>
             {menuItems.map((item) => (
@@ -58,9 +58,10 @@ export default function Wardenpage() {
           </VStack>
         </Box>
         <Box flex="1" p="20px">
-           {/* <WardenContent />  */}
+     
         </Box>
-      </Flex>
+      </Flex> */}
+       <WardenContent /> 
     </div>
   );
 }

@@ -273,12 +273,12 @@ function Install() {
       {codeSnippets.map(({ title, code }) => {
         const { hasCopied, onCopy } = useClipboard(code);
         return (
-          <>
+          <div key={title}>
             <Text fontSize="1xl" fontWeight="bold">
               {title}
             </Text>
             <CodeBox code={code} onCopy={onCopy} hasCopied={hasCopied} />
-          </>
+          </div>
         );
       })}
     </Flex>
