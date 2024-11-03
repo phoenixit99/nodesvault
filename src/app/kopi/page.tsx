@@ -13,7 +13,6 @@ import {
   Icon,
   List,
   ListItem,
-  Link,
 } from "@chakra-ui/react";
 import Header from "../components/Header";
 import { CheckCircleIcon, CopyIcon } from "@chakra-ui/icons";
@@ -282,30 +281,6 @@ kopid tx staking create-validator validator.json \
     <div>
       <Header />
       <Flex width="100%">
-        {/* <Box width="250px" padding="20px">
-          <VStack align="start" spacing={6}>
-            {menuItems.map((item) => (
-              <Box
-                key={item.id}
-                onClick={() => handleSelect(item.id)}
-                cursor="pointer"
-                p={2}
-                borderRadius="md"
-                _hover={{ bg: "blue.200", color: "white" }}
-                bg={selectedId === item.id ? "blue.500" : "transparent"} // Show selected background color
-                color={selectedId === item.id ? "white" : "black"} // Show selected text color
-              >
-                <Flex align="center">
-                  <Text fontSize="lg">{item.icon}</Text>
-                  <Text ml={3} fontSize="md">
-                    {item.title}
-                  </Text>
-                </Flex>
-              </Box>
-            ))}
-          </VStack>
-        </Box> */}
-
         {/* Content Area */}
         <Box flex="1" p="20px">
           <WardenContent />

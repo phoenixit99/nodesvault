@@ -29,6 +29,7 @@ const NetworkCard: React.FC<NetworkCardProps> = ({ network }) => {
       borderColor="gray.200"
       w="100%"
       maxW="400px"
+     cursor="pointer"
     >
       <VStack spacing={4}>
         <Image src={network.logo} alt={network.name} boxSize="50px" />
