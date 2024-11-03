@@ -3,6 +3,8 @@
 import { Box, Flex, Link, VStack,Text, ListItem, List, Heading, Stack, Icon } from "@chakra-ui/react";
 import Header from "../components/Header";
 import { CheckCircleIcon } from "@chakra-ui/icons";
+import { useState } from "react";
+
 interface MenuItem {
     id: number; // Unique identifier
     title: string; // Title of the menu item
@@ -10,15 +12,19 @@ interface MenuItem {
     href: string;
   }
   const menuItems: MenuItem[] = [
-    { id: 0, title: "Daskboard", icon: "💻", href: "/warden"  },
-    { id: 1, title: "Installation", icon: "⚙️" , href: "/warden/install" },
-    { id: 2, title: "Sync", icon: "🚀" , href: "/warden/sync" },
-    { id: 3, title: "Upgrade", icon: "⬆️", href: "/warden/upgrade"  },
-    { id: 4, title: "Command", icon: "💻", href: "/warden/command"  },
-    { id: 5, title: "Slinky", icon: "🔧" , href: "/warden/slinky" },
+    { id: 0, title: "Daskboard", icon: "💻", href: "/wardenprotocol"  },
+    { id: 1, title: "Installation", icon: "⚙️" , href: "/wardenprotocol/install" },
+    { id: 2, title: "Sync", icon: "🚀" , href: "/wardenprotocol/sync" },
+    { id: 3, title: "Upgrade", icon: "⬆️", href: "/wardenprotocol/upgrade"  },
+    { id: 4, title: "Command", icon: "💻", href: "/wardenprotocol/command"  },
+    { id: 5, title: "Slinky", icon: "🔧" , href: "/wardenprotocol/slinky" },
   ];
 export default function AboutUsPage() {
+  const [selectedId, setSelectedId] = useState(0); // Default to the first item
 
+  const handleSelect = (id: number) => {
+    setSelectedId(id);
+  };
 
   const WardenContent = () => {
     return (
@@ -158,7 +164,8 @@ export default function AboutUsPage() {
             {menuItems.map((item) => (
               <Link key={item.id}
               style={{ textDecoration: "none" }}
-             href={item.href}
+              href={item.href}
+              onClick={() => handleSelect(item.id)}
               >
                 <Flex
                   align="center"
@@ -177,11 +184,13 @@ export default function AboutUsPage() {
           </VStack>
         </Box>
         <Box flex="1" p="20px">
-          
         </Box>
-        <WardenContent></WardenContent>
+        {selectedId === 0 && (
+        <p className="mt-4 text-center text-xl font-semibold text-gray-800">
+         <WardenContent></WardenContent>
+        </p>
+      )}
       </Flex>
     </div>
   );
-  
 }
