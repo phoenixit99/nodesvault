@@ -47,12 +47,12 @@ const NetworkCard: React.FC<NetworkCardProps> = ({ network }) => {
         <HStack spacing={2}>
           <Button size="sm" colorScheme="teal">
             {" "}
-            <Link href="https://explorer.nodesvault.com/warden/">
+            <Link href="https://explorer.nodesvault.com/warden-testnet/">
               Services
             </Link>
           </Button>
           <Button size="sm" colorScheme="teal">
-            <Link href="https://explorer.nodesvault.com/warden/">
+            <Link href="https://explorer.nodesvault.com/warden-testnet/">
               Explorer
             </Link>
           </Button>
