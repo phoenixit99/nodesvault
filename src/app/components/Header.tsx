@@ -14,6 +14,7 @@ import {
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
+import { useRouter } from "next/navigation";
 const Header = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { colorMode, toggleColorMode } = useColorMode();
